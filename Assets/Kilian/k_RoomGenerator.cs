@@ -11,9 +11,14 @@ public class k_RoomGenerator : MonoBehaviour
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
 
+    public GameObject RDoor;
+    public GameObject LDoor;
+
     public Transform roomParent;
     private ArrayList floorArr = new ArrayList();
     private ArrayList wallArr = new ArrayList();
+    private ArrayList doorArr = new ArrayList();
+
     private (int tileID, Vector3 tilePosition) tileObj;
 
     // Start is called before the first frame update
@@ -30,10 +35,8 @@ public class k_RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            ClearTiles();
-            GenerateFloor(xRoom, zRoom);
-            GenerateBackWalls(xRoom, zRoom);
-            GenerateFrontWalls(xRoom, zRoom);
+            ClearDoors();
+            GenerateDoors(xRoom, zRoom);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -100,6 +103,22 @@ public class k_RoomGenerator : MonoBehaviour
         }
     }
 
+
+    private void GenerateDoors(int xRoom, int zRoom)
+    {
+        //Right door positionning
+        float widthDoor = RDoor.transform.localScale.z;
+        Vector3 pos = new Vector3(xRoom, RDoor.transform.localScale.y / 2, UnityEngine.Random.Range(1 + widthDoor / 2, zRoom - 1 - widthDoor / 2));
+        doorArr.Add(Instantiate(RDoor, pos, Quaternion.identity, roomParent));
+
+        //Left door positionning
+        widthDoor = LDoor.transform.localScale.x;
+        pos = new Vector3(UnityEngine.Random.Range(1 + widthDoor / 2, xRoom - 1 - widthDoor / 2), LDoor.transform.localScale.y / 2, zRoom);
+        doorArr.Add(Instantiate(LDoor, pos, Quaternion.identity, roomParent));
+
+    }
+
+
     private void ClearTiles()
     {
         foreach (GameObject tile in floorArr)
@@ -114,4 +133,13 @@ public class k_RoomGenerator : MonoBehaviour
         }
         wallArr.Clear();
     }
+
+    private void ClearDoors()
+    {
+        foreach (GameObject door in doorArr)
+        {
+            Destroy(door);
+        }
+        doorArr.Clear();
+    }    
 }

@@ -198,10 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91de2919ccff34541854446595b0211d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRoom: 30
-  zRoom: 20
+  xRoom: 15
+  zRoom: 15
   floorPrefab: {fileID: 8470224891321930635, guid: 426c767393cd4ef4991d1fb4b22f42ac, type: 3}
+  frontWallPrefab: {fileID: 1344900538982879082, guid: b539b7b1f8ec6fc4990473c3f4d9052e, type: 3}
   wallPrefab: {fileID: 1344900538982879082, guid: cebf16b2d9d1944489bf786bcc71d197, type: 3}
+  RDoor: {fileID: 8171204958310405383, guid: 0e886f79e891d934d8e959329ddcccaa, type: 3}
+  LDoor: {fileID: 2939890091860581603, guid: ba3681b03a3e30941a90966c14e39261, type: 3}
   roomParent: {fileID: 347332216}
 --- !u!1 &945014589
 GameObject:
