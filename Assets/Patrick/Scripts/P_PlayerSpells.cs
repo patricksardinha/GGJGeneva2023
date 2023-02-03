@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class P_PlayerSpells : MonoBehaviour
 {
-
-    public GameObject player;
     private Rigidbody rb;
 
     [SerializeField]
@@ -16,19 +15,17 @@ public class PlayerMovement : MonoBehaviour
     // [False] : enable attack
     private bool isAttacking;
 
-    // Centers points of attack
-    [SerializeField]
-    private float centerPointAttackMelee;
+    // Collider zone of attack player
+    private BoxCollider colliderZoneMelee;
+    private BoxCollider colliderZoneRange;
 
-    [SerializeField]
-    private float centerPointAttackRange;
-
-    // Radius attack
-    [SerializeField]
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<BoxCollider>();
+        colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<BoxCollider>();
 
         // Init attack
         isAttacking = false;
@@ -47,23 +44,43 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = -transform.right * playerSpeed;
 
         // Player Attack Input System
+        /*
         if (Input.GetKey(KeyCode.Q))
-            PlayerAttackMelee();
+            PlayerAttackMeleeStart();
         if (Input.GetKey(KeyCode.E)) 
-            PlayerAttackRange();
+            PlayerAttackRangeStart();
+        */
     }
 
-    private void PlayerAttackMelee()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collision with enemy");
+        }
+    }
+
+    private void OnPlayerAttackMeleeStart(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking melee");
         // Player Animation attack melee
 
     }
 
-    private void PlayerAttackRange()
+    private void PlayerAttackMeleeEnd()
+    {
+
+    }
+
+    private void OnPlayerAttackRangeStart(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking range");
         // Player Animation attack range
+    }
+
+    private void PlayerAttackRangeEnd()
+    {
+
     }
 
 }
