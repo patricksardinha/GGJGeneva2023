@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomGenerator : MonoBehaviour
+public class k_RoomGenerator : MonoBehaviour
 {
     public int xRoom = 10;
     public int zRoom = 5;
@@ -25,6 +25,7 @@ public class RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            ClearTiles();
             GenerateFloor(xRoom, zRoom);
             GenerateWalls(xRoom, zRoom);
         }
@@ -58,7 +59,7 @@ public class RoomGenerator : MonoBehaviour
         for (int x = 0; x < xRoom; x++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(x, 0, zRoom);
+            Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y/2, zRoom);
             tileObj = (wallID, wallPosition);
 
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
@@ -67,7 +68,7 @@ public class RoomGenerator : MonoBehaviour
         for (int z = 0; z < zRoom; z++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(xRoom, 0, z);
+            Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y/2, z);
             tileObj = (wallID, wallPosition);
 
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
@@ -81,5 +82,11 @@ public class RoomGenerator : MonoBehaviour
             Destroy(tile);
         }
         floorArr.Clear();
+
+        foreach (GameObject tile in wallArr)
+        {
+            Destroy(tile);
+        }
+        wallArr.Clear();
     }
 }
