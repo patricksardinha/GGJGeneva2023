@@ -11,9 +11,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 5.0f;
 
-    void Start()
+    // Player attacking state
+    // [True] : disable attack
+    // [False] : enable attack
+    private bool isAttacking;
+
+    // Centers points of attack
+    [SerializeField]
+    private float centerPointAttackMelee;
+
+    [SerializeField]
+    private float centerPointAttackRange;
+
+    // Radius attack
+    [SerializeField]
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        // Init attack
+        isAttacking = false;
     }
 
     private void Update()
@@ -38,12 +56,14 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerAttackMelee()
     {
         Debug.Log("player is attacking melee");
+        // Player Animation attack melee
 
     }
 
     private void PlayerAttackRange()
     {
         Debug.Log("player is attacking range");
+        // Player Animation attack range
     }
 
 }
