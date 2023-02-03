@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class k_RoomGenerator : MonoBehaviour
 {
-    public int xRoom = 10;
-    public int zRoom = 5;
+    public int xRoom = 30;
+    public int zRoom = 20;
     public GameObject floorPrefab;
+    public GameObject frontWallPrefab;
     public GameObject wallPrefab;
+
     public Transform roomParent;
     private ArrayList floorArr = new ArrayList();
     private ArrayList wallArr = new ArrayList();
@@ -17,7 +19,10 @@ public class k_RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ClearTiles();
+        GenerateFloor(xRoom, zRoom);
+        GenerateBackWalls(xRoom, zRoom);
+        GenerateFrontWalls(xRoom, zRoom);
     }
 
     // Update is called once per frame
@@ -27,7 +32,8 @@ public class k_RoomGenerator : MonoBehaviour
         {
             ClearTiles();
             GenerateFloor(xRoom, zRoom);
-            GenerateWalls(xRoom, zRoom);
+            GenerateBackWalls(xRoom, zRoom);
+            GenerateFrontWalls(xRoom, zRoom);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -50,28 +56,47 @@ public class k_RoomGenerator : MonoBehaviour
 
                 floorArr.Add(Instantiate(floorPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
             }
-        }        
+        }
     }
 
-    private void GenerateWalls(int xRoom, int zRoom)
+    private void GenerateBackWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate Walls");
         for (int x = 0; x < xRoom; x++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y/2, zRoom);
+            Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y / 2, zRoom);
             tileObj = (wallID, wallPosition);
-
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
 
         for (int z = 0; z < zRoom; z++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y/2, z);
+            Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y / 2, z);
             tileObj = (wallID, wallPosition);
 
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
+        }
+    }
+
+    private void GenerateFrontWalls(int xRoom, int zRoom)
+    {
+        Debug.Log("Generate front Walls");
+        for (int x = 0; x < xRoom; x++)
+        {
+            int frontWallID = 1;
+            Vector3 frontWallPosition = new Vector3(x, frontWallPrefab.transform.localScale.y / 2, -1);
+            tileObj = (frontWallID, frontWallPosition);
+            wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
+        }
+
+        for (int z = 0; z < zRoom; z++)
+        {
+            int frontWallID = 1;
+            Vector3 frontWallPosition = new Vector3(-1, frontWallPrefab.transform.localScale.y / 2, z);
+            tileObj = (frontWallID, frontWallPosition);
+            wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
     }
 
