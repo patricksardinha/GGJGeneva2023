@@ -451,6 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
+  colliderZoneMelee: {fileID: 973476129000940920}
+  colliderZoneRange: {fileID: 2957989692487837948}
 --- !u!1 &3423652341067276585
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +539,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7741625113677808684, guid: d62215b97f6bae34384763e27e47d88c, type: 3}
+  - {fileID: 2100000, guid: b268d4784ad92de4e9d4ae8feeebcf59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1049,7 +1051,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 78725516586721616, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 78725516586721617, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_Mesh
@@ -1117,13 +1119,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 78725516586721631, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_VersionIndex
-      value: 11
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c355eefc1960db45b2050c091879029, type: 3}
 --- !u!4 &2957989692487837947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 78725516586721619, guid: 6c355eefc1960db45b2050c091879029, type: 3}
+  m_PrefabInstance: {fileID: 2889995415324199336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2957989692487837948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 78725516586721620, guid: 6c355eefc1960db45b2050c091879029, type: 3}
   m_PrefabInstance: {fileID: 2889995415324199336}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6502342098774066665
@@ -1191,11 +1198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346844, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1337
+      value: 1391
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346845, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346846, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_Mesh
@@ -1207,6 +1214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
+--- !u!1 &973476129000940920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6322647958111346833, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
+  m_PrefabInstance: {fileID: 6502342098774066665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &973476129000940921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6322647958111346832, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
