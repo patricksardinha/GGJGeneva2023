@@ -16,17 +16,20 @@ public class P_PlayerSpells : MonoBehaviour
     private bool isAttackReady;
 
     // Collider zone of attack player
-    private BoxCollider colliderZoneMelee;
-    private BoxCollider colliderZoneRange;
+    private MeshCollider colliderZoneMelee;
+    private MeshCollider colliderZoneRange;
 
+    private Animator playerAnimator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<BoxCollider>();
-        colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<BoxCollider>();
+        // Zone collider : Child 0 & 1 of Character gameobject
+        colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<MeshCollider>();
+        colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<MeshCollider>();
 
+        playerAnimator = GetComponent<Animator>();
         // Init attack
         isAttackReady = true;
     }
@@ -47,10 +50,11 @@ public class P_PlayerSpells : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Q))
             OnPlayerAttackMelee();
-        /*
+        
         if (Input.GetKey(KeyCode.E)) 
-            PlayerAttackRange();
-        */
+            OnPlayerAttackRange();
+
+        Debug.Log("?" + isAttackReady);
     }
 
     /// <summary>
@@ -78,14 +82,17 @@ public class P_PlayerSpells : MonoBehaviour
         // Player Animation attack melee
         if (isAttackReady)
         {
-            Debug.Log("animatorPlayer.SetTrigger(attackMelee)");
+            Debug.Log("playerAnimator.SetTrigger(attackMelee)");
 
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
-            //animatorPlayer.SetTrigger("attackMelee");
+            playerAnimator.SetTrigger("attackMelee");
             isAttackReady = false;
         }
     }
 
+    /// <summary>
+    /// Animation event start attack melee.
+    /// </summary>
     private void PlayerAttackMeleeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
@@ -93,6 +100,9 @@ public class P_PlayerSpells : MonoBehaviour
          colliderZoneMelee.enabled = true;
     }
 
+    /// <summary>
+    /// Animation event end attack melee.
+    /// </summary>
     private void PlayerAttackMeleeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
@@ -105,35 +115,45 @@ public class P_PlayerSpells : MonoBehaviour
     /// Player using range attack.
     /// </summary>
     /// <param name="context">From the input system.</param>
-    private void OnPlayerAttackRange(InputAction.CallbackContext context)
+    
+    //private void OnPlayerAttackRange(InputAction.CallbackContext context)
+    private void OnPlayerAttackRange()
     {
         Debug.Log("player is attacking range");
 
         // Player Animation attack range
         if (isAttackReady)
         {
-            Debug.Log("animatorPlayer.SetTrigger(attackRange)");
+            Debug.Log("playerAnimator.SetTrigger(attackRange)");
 
             // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
-            //animatorPlayer.SetTrigger("attackRange");
+            playerAnimator.SetTrigger("attackRange");
             isAttackReady = false;
         }
 
     }
 
+    /// <summary>
+    /// Animation event start attack range.
+    /// </summary>
     private void PlayerAttackRangeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable range zone collider to detect range collisions
         colliderZoneRange.enabled = true;
+        Debug.Log("PlayerAttackRangeStart");
     }
 
+    /// <summary>
+    /// Animation event end attack range.
+    /// </summary>
     private void PlayerAttackRangeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable range zone collider
         colliderZoneRange.enabled = false;
         isAttackReady = true;
+        Debug.Log("PlayerAttackRangeEnd");
     }
 
 }
