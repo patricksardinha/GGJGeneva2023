@@ -47,10 +47,10 @@ public class P_PlayerSpells : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Q))
             OnPlayerAttackMelee();
-        /*
+        
         if (Input.GetKey(KeyCode.E)) 
-            PlayerAttackRange();
-        */
+            OnPlayerAttackRange();
+        
     }
 
     /// <summary>
@@ -78,10 +78,10 @@ public class P_PlayerSpells : MonoBehaviour
         // Player Animation attack melee
         if (isAttackReady)
         {
-            Debug.Log("animatorPlayer.SetTrigger(attackMelee)");
+            Debug.Log("playerAnimator.SetTrigger(attackMelee)");
 
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
-            //animatorPlayer.SetTrigger("attackMelee");
+            //playerAnimator.SetTrigger("attackMelee");
             isAttackReady = false;
         }
     }
@@ -105,17 +105,19 @@ public class P_PlayerSpells : MonoBehaviour
     /// Player using range attack.
     /// </summary>
     /// <param name="context">From the input system.</param>
-    private void OnPlayerAttackRange(InputAction.CallbackContext context)
+    
+    //private void OnPlayerAttackRange(InputAction.CallbackContext context)
+    private void OnPlayerAttackRange()
     {
         Debug.Log("player is attacking range");
 
         // Player Animation attack range
         if (isAttackReady)
         {
-            Debug.Log("animatorPlayer.SetTrigger(attackRange)");
+            Debug.Log("playerAnimator.SetTrigger(attackRange)");
 
             // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
-            //animatorPlayer.SetTrigger("attackRange");
+            //playerAnimator.SetTrigger("attackRange");
             isAttackReady = false;
         }
 
