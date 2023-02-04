@@ -9,6 +9,8 @@ public class k_RoomGenerator : MonoBehaviour
     public int minRoomSize = 15;
     public int maxRoomSize = 50;
 
+    public List<float> anglesForTiles = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
+
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
 
@@ -86,6 +88,7 @@ public class k_RoomGenerator : MonoBehaviour
     private void GenerateFloor(int xRoom, int zRoom)
     {
         Debug.Log("Generate the Floor");
+        
 
         for (int x = 0; x < xRoom; x=x+1)
         {
@@ -94,8 +97,8 @@ public class k_RoomGenerator : MonoBehaviour
                 int tileID = 1;
                 Vector3 tilePosition = new Vector3(x, 0, z);
                 tileObj = (tileID, tilePosition);
-
-                floorArr.Add(Instantiate(floorPrefab[UnityEngine.Random.Range(0,floorPrefab.Length)], tileObj.tilePosition, Quaternion.identity, roomParent));
+                
+                floorArr.Add(Instantiate(floorPrefab[UnityEngine.Random.Range(0,floorPrefab.Length)], tileObj.tilePosition, Quaternion.Euler(0, anglesForTiles[UnityEngine.Random.Range(0, anglesForTiles.Count)], 0), roomParent));
             }
         }
     }
