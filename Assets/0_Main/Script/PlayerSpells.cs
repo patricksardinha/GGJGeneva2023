@@ -46,8 +46,6 @@ public class PlayerSpells : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy");
-            if (character.gameObject.CompareTag("ZoneMelee"))
-                Debug.Log("Melee collision");
         }
     }
 
@@ -66,11 +64,12 @@ public class PlayerSpells : MonoBehaviour
 
             isAttackReady = false;
 
-            // Stop movement when attacking
-            playerAnimator.SetFloat("playerSpeed", 0);
-
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
             playerAnimator.SetTrigger("attackMelee");
+
+            // Stop movement when attacking
+            //playerAnimator.SetFloat("playerSpeed", 0);
+
         }
     }
 
@@ -111,7 +110,7 @@ public class PlayerSpells : MonoBehaviour
             isAttackReady = false;
 
             // Stop movement when attacking
-            playerAnimator.SetFloat("playerSpeed", 0);
+            //playerAnimator.SetFloat("playerSpeed", 0);
 
             // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
             playerAnimator.SetTrigger("attackRange");

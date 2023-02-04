@@ -20,9 +20,16 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        Debug.Log("Pause");
+        Time.timeScale = 0f;
+    }
+
+
     public void Play()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("1_Main");
     }
 
     public void Credits()
