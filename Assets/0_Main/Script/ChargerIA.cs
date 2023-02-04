@@ -29,7 +29,7 @@ public class ChargerIA : MonoBehaviour
             transform.LookAt(target.transform);
             float DistanceToTarget = Vector3.Distance(transform.position, target.transform.position);
 
-            if (DistanceToTarget > 1.0f)
+            if (DistanceToTarget > 2.0f)
             {
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }

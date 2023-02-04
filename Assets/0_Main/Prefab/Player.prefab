@@ -384,8 +384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0cacbd8c745704bb94d0ac62d4e7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeAttack: {fileID: 0}
   character: {fileID: 2851848056463422007}
+  timeBetweenMeleeAttack: 1
+  timeBetweenRangeAttack: 1
+  EnnemiesInMelee: []
 --- !u!54 &1974287644566443314
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -989,6 +991,7 @@ GameObject:
   - component: {fileID: 4523587260411859658}
   - component: {fileID: 4523587260411859659}
   - component: {fileID: 4523587260411859656}
+  - component: {fileID: 3927665483422547993}
   m_Layer: 0
   m_Name: ZoneRange
   m_TagString: Untagged
@@ -1004,8 +1007,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523587260411859662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0, z: 4.500001}
-  m_LocalScale: {x: 1.5, y: 2, z: 1.5}
+  m_LocalPosition: {x: -0.75, y: 0, z: 1}
+  m_LocalScale: {x: 1.5, y: 2, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3231363648019736717}
@@ -1248,7 +1251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: a1e97cbf2538241b691aae8243b5fb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1292,6 +1295,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3927665483422547993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523587260411859662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffd442417134bd42816b8602b7e1452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s_playerSpells: {fileID: 3264497392735068660}
 --- !u!1 &4533940159250310109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1543,7 @@ GameObject:
   - component: {fileID: 5855742516607276316}
   - component: {fileID: 5855742516607276319}
   - component: {fileID: 5855742516607276318}
+  - component: {fileID: 8861517200741987267}
   m_Layer: 0
   m_Name: ZoneMelee
   m_TagString: Untagged
@@ -1786,7 +1803,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: a1e97cbf2538241b691aae8243b5fb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1830,6 +1847,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8861517200741987267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855742516607276304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cc632c09306ae479fd04f350466593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s_playerSpells: {fileID: 3264497392735068660}
 --- !u!1 &6231121552203064161
 GameObject:
   m_ObjectHideFlags: 0
