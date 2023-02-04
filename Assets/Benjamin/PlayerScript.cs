@@ -32,4 +32,9 @@ public class PlayerScript : MonoBehaviour
         //and if life <= 0, need to use death animation
     }
 
+    public void ResetPlayerToSpawnPoint()
+    {
+        //need to reset to spawn point
+    }
+
 }
