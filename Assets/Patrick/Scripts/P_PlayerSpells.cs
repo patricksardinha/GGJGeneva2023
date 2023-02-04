@@ -36,19 +36,20 @@ public class P_PlayerSpells : MonoBehaviour
 
     private void Update()
     {
-        // Player Movement Input System
-        if (Input.GetKey(KeyCode.UpArrow))
-            rb.velocity = transform.forward * playerSpeed;
-        if (Input.GetKey(KeyCode.DownArrow))
-            rb.velocity = -transform.forward * playerSpeed;
-        if (Input.GetKey(KeyCode.RightArrow))
-            rb.velocity = transform.right * playerSpeed;
-        if (Input.GetKey(KeyCode.LeftArrow))
-            rb.velocity = -transform.right * playerSpeed;
 
-        if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.LeftArrow)))
+        if (((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.LeftArrow))) && isAttackReady)
         {
             playerAnimator.SetFloat("playerSpeed", 1);
+
+            // Player Movement Input System
+            if (Input.GetKey(KeyCode.UpArrow))
+                rb.velocity = transform.forward * playerSpeed;
+            if (Input.GetKey(KeyCode.DownArrow))
+                rb.velocity = -transform.forward * playerSpeed;
+            if (Input.GetKey(KeyCode.RightArrow))
+                rb.velocity = transform.right * playerSpeed;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                rb.velocity = -transform.right * playerSpeed;
         } 
         else
         {
@@ -93,9 +94,12 @@ public class P_PlayerSpells : MonoBehaviour
         {
             Debug.Log("playerAnimator.SetTrigger(attackMelee)");
 
+            isAttackReady = false;
+            // Stop movement when attacking
+            playerAnimator.SetFloat("playerSpeed", 0);
+
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
             playerAnimator.SetTrigger("attackMelee");
-            isAttackReady = false;
         }
     }
 
@@ -137,6 +141,8 @@ public class P_PlayerSpells : MonoBehaviour
 
             // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
             playerAnimator.SetTrigger("attackRange");
+            // Stop movement when attacking
+            playerAnimator.SetFloat("playerSpeed", 0);
             isAttackReady = false;
         }
 
