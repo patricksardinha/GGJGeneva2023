@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 303594544391727687}
   - component: {fileID: 303594544391727688}
   - component: {fileID: 303594544391727689}
-  - component: {fileID: 303594544391727690}
   - component: {fileID: 303594544391727686}
   - component: {fileID: 303594544391727684}
   - component: {fileID: 303594544391727685}
@@ -186,20 +185,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &303594544391727690
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303594544391727691}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &303594544391727686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0cacbd8c745704bb94d0ac62d4e7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeAttack: {fileID: 0}
   character: {fileID: 2851848056463422007}
 --- !u!54 &1974287644566443314
 Rigidbody:

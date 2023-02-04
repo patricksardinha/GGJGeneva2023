@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : MonoBehaviour
+public class RangeAttack : MonoBehaviour
 {
     public PlayerSpells s_playerSpells;
 
@@ -10,8 +10,8 @@ public class MeleeAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy in MELEE attack area");
-            s_playerSpells.GetEnemyInMelee(other.gameObject, true);
+            Debug.Log("Enemy in RANGE attack area");
+            s_playerSpells.GetEnemyInRange(other.gameObject, true);
         }
     }
 
@@ -19,8 +19,8 @@ public class MeleeAttack : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy in MELEE attack area");
-            s_playerSpells.GetEnemyInMelee(other.gameObject, false);
+            Debug.Log("Enemy in RANGE attack area");
+            s_playerSpells.GetEnemyInRange(other.gameObject, false);
         }
     }
 }

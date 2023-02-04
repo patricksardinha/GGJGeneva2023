@@ -20,7 +20,11 @@ public class EnnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 currentPos = transform.position;
         
+        currentPos.y = 1;
+    
+        transform.position = currentPos;
     }
 
     void FixedUpdate()
@@ -35,6 +39,7 @@ public class EnnemyScript : MonoBehaviour
             Debug.Log("Player touched");
             collision.gameObject.GetComponent<PlayerScript>().TakeDamage(attackDamage);
             //need to use attack animation
+            
         }
     }
 
@@ -44,6 +49,7 @@ public class EnnemyScript : MonoBehaviour
         Debug.Log("Ennemy life: " + life);
         //need to use taking damage animation
         //and if life <= 0, need to use death animation
+        Destroy(gameObject);
     }
 
 

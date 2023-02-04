@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
 
-    [SerializeField] private float life = 1f;
-    [SerializeField] private float attackSpeed = 5f;
+    [SerializeField] private float life = 50f;
 
     // Start is called before the first frame update
     void Start()

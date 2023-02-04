@@ -9,7 +9,9 @@ public class k_RoomGenerator : MonoBehaviour
     public int minRoomSize = 15;
     public int maxRoomSize = 50;
 
+
     public List<float> anglesForTiles = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
+
 
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
