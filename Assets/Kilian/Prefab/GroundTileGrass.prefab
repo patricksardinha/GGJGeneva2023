@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3380654943065670246}
   - component: {fileID: 1821042318373162435}
   - component: {fileID: 4512979693968226569}
+  - component: {fileID: 334284739}
   m_Layer: 0
-  m_Name: ground_tile_grass__
+  m_Name: GroundTileGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2711641340976388316}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.115018, y: 0.20000002, z: 3.8420625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &334284739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711641340976388316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.000001, y: 0.20000012, z: 2.000001}
+  m_Center: {x: 0, y: -0.10000006, z: 0}
 --- !u!1 &2839713889998724242
 GameObject:
   m_ObjectHideFlags: 0

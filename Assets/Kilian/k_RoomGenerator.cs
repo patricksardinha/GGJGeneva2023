@@ -12,7 +12,7 @@ public class k_RoomGenerator : MonoBehaviour
 
     public List<float> anglesForTiles = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
 
-    private List<int> rouletTen = new List<int>() { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1};
+    private List<int> rouletTen = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
 
     [SerializeField] private int xRoom;
@@ -38,6 +38,11 @@ public class k_RoomGenerator : MonoBehaviour
     void Start()
     {
         GenerateRoomSize(minRoomSize, maxRoomSize);
+
+        if (xRoom % 2 == 0)
+            xRoom++;
+        if (zRoom % 2 == 0)
+            zRoom++;
 
         GenerateRoom(xRoom, zRoom);
     }
@@ -92,11 +97,10 @@ public class k_RoomGenerator : MonoBehaviour
     private void GenerateFloor(int xRoom, int zRoom)
     {
         Debug.Log("Generate the Floor");
-        
 
-        for (int x = 0; x < xRoom; x += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.x))
+        for (int x = 0; x < xRoom; x += (int)Mathf.Floor(floorPrefab[1].gameObject.transform.GetComponent<BoxCollider>().size.x))
         {
-            for (int z = 0; z < zRoom; z += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.z))
+            for (int z = 0; z < zRoom; z += (int)Mathf.Floor(floorPrefab[1].gameObject.transform.GetComponent<BoxCollider>().size.z))
             { 
                 int tileID = 1;
                 Vector3 tilePosition = new Vector3(x, 0, z);
