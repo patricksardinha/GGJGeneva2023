@@ -12,7 +12,7 @@ public class k_RoomGenerator : MonoBehaviour
     [SerializeField] private float xRoom;
     [SerializeField] private float zRoom;
 
-    public GameObject floorPrefab;
+    public GameObject[] floorPrefab;
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
 
@@ -83,15 +83,15 @@ public class k_RoomGenerator : MonoBehaviour
     {
         Debug.Log("Generate the Floor");
 
-        for (int x = 0; x < xRoom; x++)
+        for (int x = 0; x < xRoom; x=x+1)
         {
-            for (int z = 0; z < zRoom; z++)
+            for (int z = 0; z < zRoom; z=z+1)
             {
                 int tileID = 1;
                 Vector3 tilePosition = new Vector3(x, 0, z);
                 tileObj = (tileID, tilePosition);
 
-                floorArr.Add(Instantiate(floorPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
+                floorArr.Add(Instantiate(floorPrefab[UnityEngine.Random.Range(0,floorPrefab.Length)], tileObj.tilePosition, Quaternion.identity, roomParent));
             }
         }
     }
