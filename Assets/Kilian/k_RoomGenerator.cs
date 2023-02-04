@@ -90,10 +90,10 @@ public class k_RoomGenerator : MonoBehaviour
         Debug.Log("Generate the Floor");
         
 
-        for (int x = 0; x < xRoom; x=x+1)
+        for (int x = 0; x < xRoom; x += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.x))
         {
-            for (int z = 0; z < zRoom; z=z+1)
-            {
+            for (int z = 0; z < zRoom; z += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.z))
+            { 
                 int tileID = 1;
                 Vector3 tilePosition = new Vector3(x, 0, z);
                 tileObj = (tileID, tilePosition);

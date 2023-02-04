@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1040786457908371794}
   - component: {fileID: 4169847621393149687}
   - component: {fileID: 2178248087677803069}
+  - component: {fileID: -6778988629310697701}
   m_Layer: 0
   m_Name: GroundTileGrass
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-6778988629310697701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376698629992889320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7308235, y: 0.29038277, z: 1.7900829}
+  m_Center: {x: 0.01307416, y: 0.22480558, z: 0.06509861}
 --- !u!1 &2145219610037402331
 GameObject:
   m_ObjectHideFlags: 0
