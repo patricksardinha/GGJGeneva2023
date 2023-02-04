@@ -16,7 +16,8 @@ public class PlayerSpells : MonoBehaviour
 
     private Animator playerAnimator;
 
-    // TODO: Stop player's movement when attacking
+    // TODO:SetFloat speedPlayer to enable running animation
+    //      Stop player's movement when attacking
     // -> playerScript.cs
 
     private void Start()
@@ -29,6 +30,7 @@ public class PlayerSpells : MonoBehaviour
 
         // Player can directly attack at start
         isAttackReady = true;
+        
     }
 
 
@@ -48,14 +50,14 @@ public class PlayerSpells : MonoBehaviour
     /// Player using melee attack.
     /// </summary>
     /// <param name="context">From the input system.</param>
-    private void OnPlayerAttackMelee(InputAction.CallbackContext context)
+    public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking melee");
 
         // The player can attack
         if (isAttackReady)
         {
-            Debug.Log("(attackMelee)");
+            Debug.Log("(attackMelee)???");
 
             isAttackReady = false;
 
@@ -70,7 +72,7 @@ public class PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event start attack melee.
     /// </summary>
-    private void PlayerAttackMeleeStart()
+    public void PlayerAttackMeleeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable melee zone collider to detect melee collisions
@@ -80,7 +82,7 @@ public class PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event end attack melee.
     /// </summary>
-    private void PlayerAttackMeleeEnd()
+    public void PlayerAttackMeleeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable melee zone collider
@@ -93,7 +95,7 @@ public class PlayerSpells : MonoBehaviour
     /// </summary>
     /// <param name="context">From the input system.</param>
 
-    private void OnPlayerAttackRange(InputAction.CallbackContext context)
+    public void OnPlayerAttackRange(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking range");
 
@@ -115,7 +117,7 @@ public class PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event start attack range.
     /// </summary>
-    private void PlayerAttackRangeStart()
+    public void PlayerAttackRangeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable range zone collider to detect range collisions
@@ -125,7 +127,7 @@ public class PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event end attack range.
     /// </summary>
-    private void PlayerAttackRangeEnd()
+    public void PlayerAttackRangeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable range zone collider
