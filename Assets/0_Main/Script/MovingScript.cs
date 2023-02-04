@@ -30,7 +30,7 @@ public class MovingScript : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
-        PlayerMovement = Quaternion.Euler(0, 0, 45) * input;
+        PlayerMovement = Quaternion.Euler(0, 0, -45) * input;
 
     }
 }

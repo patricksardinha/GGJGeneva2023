@@ -46,6 +46,15 @@ public class P_PlayerSpells : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
             rb.velocity = -transform.right * playerSpeed;
 
+        if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.LeftArrow)))
+        {
+            playerAnimator.SetFloat("playerSpeed", 1);
+        } 
+        else
+        {
+            playerAnimator.SetFloat("playerSpeed", 0);
+        }
+
         // Player Attack Input System
         
         if (Input.GetKey(KeyCode.Q))
