@@ -8,7 +8,6 @@ public class MovingScript : MonoBehaviour
     //speed in pixels per second
     [SerializeField] private float speed = 50f;
     private Vector2 PlayerMovement = Vector2.zero;
-    private Vector2 PlayerDirection = Vector2.zero;
 
 
     // Start is called before the first frame update

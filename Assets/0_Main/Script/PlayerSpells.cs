@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class P_PlayerSpells : MonoBehaviour
+public class PlayerSpells : MonoBehaviour
 {
-    private Rigidbody rb;
-
-    [SerializeField]
-    private float playerSpeed = 5.0f;
-
     // Player attacking state
     // [True] : enable attack
     // [False] : disable attack
@@ -21,51 +16,23 @@ public class P_PlayerSpells : MonoBehaviour
 
     private Animator playerAnimator;
 
+    // TODO:SetFloat speedPlayer to enable running animation
+    //      Stop player's movement when attacking
+    // -> playerScript.cs
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
         // Zone collider : Child 0 & 1 of Character gameobject
         colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<MeshCollider>();
         colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<MeshCollider>();
 
         playerAnimator = GetComponent<Animator>();
-        // Init attack
+
+        // Player can directly attack at start
         isAttackReady = true;
+        
     }
 
-    private void Update()
-    {
-
-        if (((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.LeftArrow))) && isAttackReady)
-        {
-            playerAnimator.SetFloat("playerSpeed", 1);
-
-            // Player Movement Input System
-            if (Input.GetKey(KeyCode.UpArrow))
-                rb.velocity = transform.forward * playerSpeed;
-            if (Input.GetKey(KeyCode.DownArrow))
-                rb.velocity = -transform.forward * playerSpeed;
-            if (Input.GetKey(KeyCode.RightArrow))
-                rb.velocity = transform.right * playerSpeed;
-            if (Input.GetKey(KeyCode.LeftArrow))
-                rb.velocity = -transform.right * playerSpeed;
-        } 
-        else
-        {
-            playerAnimator.SetFloat("playerSpeed", 0);
-        }
-
-        // Player Attack Input System
-        
-        if (Input.GetKey(KeyCode.Q))
-            OnPlayerAttackMelee();
-        
-        if (Input.GetKey(KeyCode.E)) 
-            OnPlayerAttackRange();
-
-        Debug.Log("?" + isAttackReady);
-    }
 
     /// <summary>
     /// Dections of collisions with enemies.
@@ -83,18 +50,17 @@ public class P_PlayerSpells : MonoBehaviour
     /// Player using melee attack.
     /// </summary>
     /// <param name="context">From the input system.</param>
-
-    //private void OnPlayerAttackMelee(InputAction.CallbackContext context)
-    private void OnPlayerAttackMelee()
+    public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking melee");
 
-        // Player Animation attack melee
+        // The player can attack
         if (isAttackReady)
         {
-            Debug.Log("playerAnimator.SetTrigger(attackMelee)");
+            Debug.Log("(attackMelee)???");
 
             isAttackReady = false;
+
             // Stop movement when attacking
             playerAnimator.SetFloat("playerSpeed", 0);
 
@@ -106,17 +72,17 @@ public class P_PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event start attack melee.
     /// </summary>
-    private void PlayerAttackMeleeStart()
+    public void PlayerAttackMeleeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable melee zone collider to detect melee collisions
-         colliderZoneMelee.enabled = true;
+        colliderZoneMelee.enabled = true;
     }
 
     /// <summary>
     /// Animation event end attack melee.
     /// </summary>
-    private void PlayerAttackMeleeEnd()
+    public void PlayerAttackMeleeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable melee zone collider
@@ -128,22 +94,22 @@ public class P_PlayerSpells : MonoBehaviour
     /// Player using range attack.
     /// </summary>
     /// <param name="context">From the input system.</param>
-    
-    //private void OnPlayerAttackRange(InputAction.CallbackContext context)
-    private void OnPlayerAttackRange()
+
+    public void OnPlayerAttackRange(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking range");
 
-        // Player Animation attack range
+        // The player can attack
         if (isAttackReady)
         {
-            Debug.Log("playerAnimator.SetTrigger(attackRange)");
+            Debug.Log("(attackRange)");
+            isAttackReady = false;
+
+            // Stop movement when attacking
+            playerAnimator.SetFloat("playerSpeed", 0);
 
             // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
             playerAnimator.SetTrigger("attackRange");
-            // Stop movement when attacking
-            playerAnimator.SetFloat("playerSpeed", 0);
-            isAttackReady = false;
         }
 
     }
@@ -151,24 +117,22 @@ public class P_PlayerSpells : MonoBehaviour
     /// <summary>
     /// Animation event start attack range.
     /// </summary>
-    private void PlayerAttackRangeStart()
+    public void PlayerAttackRangeStart()
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable range zone collider to detect range collisions
         colliderZoneRange.enabled = true;
-        Debug.Log("PlayerAttackRangeStart");
     }
 
     /// <summary>
     /// Animation event end attack range.
     /// </summary>
-    private void PlayerAttackRangeEnd()
+    public void PlayerAttackRangeEnd()
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable range zone collider
         colliderZoneRange.enabled = false;
         isAttackReady = true;
-        Debug.Log("PlayerAttackRangeEnd");
     }
 
 }
