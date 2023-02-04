@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 303594544391727685}
   - component: {fileID: 2947420178816340155}
   - component: {fileID: 3264497392735068660}
+  - component: {fileID: 1974287644566443314}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -211,7 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a8372f0482e794a84d905d6330311d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  rb: {fileID: 1974287644566443314}
+  speed: 500
 --- !u!114 &303594544391727684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +400,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 2851848056463422007}
+--- !u!54 &1974287644566443314
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303594544391727691}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &303594545464826034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1237,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 125
+  m_VersionIndex: 128
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1282,7 +1300,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523587260411859662}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -1757,7 +1775,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1451
+  m_VersionIndex: 1454
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1820,7 +1838,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5855742516607276304}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1

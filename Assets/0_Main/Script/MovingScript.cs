@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class MovingScript : MonoBehaviour
 {
     //speed in pixels per second
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed = 50f;
     private Vector2 PlayerMovement = Vector2.zero;
 
@@ -24,7 +25,8 @@ public class MovingScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(PlayerMovement.x * speed, 0, PlayerMovement.y * speed) * Time.deltaTime);
+        rb.velocity = new Vector3(PlayerMovement.x, 0, PlayerMovement.y) * speed * Time.deltaTime;
+        //transform.Translate(new Vector3(PlayerMovement.x * speed, 0, PlayerMovement.y * speed) * Time.deltaTime);
     }
 
     public void Move(InputAction.CallbackContext context)
