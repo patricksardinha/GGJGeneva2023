@@ -27,8 +27,12 @@ public class AimScript : MonoBehaviour
     public void Aim(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
+        if (context.canceled)
+        {
+            return;
+        }
         input = Quaternion.Euler(0, 0, 135) * input;
         PlayerDirection = Quaternion.LookRotation(new Vector3(input.x, 0, input.y), Vector3.up);
-
+        
     }
 }
