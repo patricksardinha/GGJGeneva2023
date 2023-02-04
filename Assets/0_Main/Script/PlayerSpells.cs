@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpells : MonoBehaviour
 {
+    public GameObject meleeAttack;
+
     // Player attacking state
     // [True] : enable attack
     // [False] : disable attack
@@ -45,7 +47,7 @@ public class PlayerSpells : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collision with enemy");
+            Debug.Log("From Player - I collided with the enemy");
         }
     }
 
@@ -55,12 +57,10 @@ public class PlayerSpells : MonoBehaviour
     /// <param name="context">From the input system.</param>
     public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
-        Debug.Log("player is attacking melee");
-
         // The player can attack
         if (isAttackReady)
         {
-            Debug.Log("(attackMelee)???");
+            Debug.Log("player is attacking melee");
 
             isAttackReady = false;
 
@@ -70,6 +70,8 @@ public class PlayerSpells : MonoBehaviour
             // Stop movement when attacking
             //playerAnimator.SetFloat("playerSpeed", 0);
 
+            //Must instanciate the gameobject for melee attack
+            
         }
     }
 
