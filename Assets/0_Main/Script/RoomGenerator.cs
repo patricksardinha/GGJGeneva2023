@@ -11,9 +11,14 @@ public class RoomGenerator : MonoBehaviour
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
 
+    public GameObject RDoor;
+    public GameObject LDoor;
+
     public Transform roomParent;
     private ArrayList floorArr = new ArrayList();
     private ArrayList wallArr = new ArrayList();
+    private ArrayList doorArr = new ArrayList();
+
     private (int tileID, Vector3 tilePosition) tileObj;
 
     // Start is called before the first frame update
@@ -30,10 +35,8 @@ public class RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            ClearTiles();
-            GenerateFloor(xRoom, zRoom);
-            GenerateBackWalls(xRoom, zRoom);
-            GenerateFrontWalls(xRoom, zRoom);
+            ClearDoors();
+            GenerateDoors(xRoom, zRoom);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -56,7 +59,7 @@ public class RoomGenerator : MonoBehaviour
 
                 floorArr.Add(Instantiate(floorPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
             }
-        }        
+        }
     }
 
     private void GenerateBackWalls(int xRoom, int zRoom)
@@ -65,7 +68,7 @@ public class RoomGenerator : MonoBehaviour
         for (int x = 0; x < xRoom; x++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y/2, zRoom);
+            Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y / 2, zRoom);
             tileObj = (wallID, wallPosition);
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
@@ -73,7 +76,7 @@ public class RoomGenerator : MonoBehaviour
         for (int z = 0; z < zRoom; z++)
         {
             int wallID = 1;
-            Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y/2, z);
+            Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y / 2, z);
             tileObj = (wallID, wallPosition);
 
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
@@ -100,6 +103,22 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
+
+    private void GenerateDoors(int xRoom, int zRoom)
+    {
+        //Right door positionning
+        float widthDoor = RDoor.transform.localScale.z;
+        Vector3 pos = new Vector3(xRoom, RDoor.transform.localScale.y / 2, UnityEngine.Random.Range(1 + widthDoor / 2, zRoom - 1 - widthDoor / 2));
+        doorArr.Add(Instantiate(RDoor, pos, Quaternion.identity, roomParent));
+
+        //Left door positionning
+        widthDoor = LDoor.transform.localScale.x;
+        pos = new Vector3(UnityEngine.Random.Range(1 + widthDoor / 2, xRoom - 1 - widthDoor / 2), LDoor.transform.localScale.y / 2, zRoom);
+        doorArr.Add(Instantiate(LDoor, pos, Quaternion.identity, roomParent));
+
+    }
+
+
     private void ClearTiles()
     {
         foreach (GameObject tile in floorArr)
@@ -113,5 +132,14 @@ public class RoomGenerator : MonoBehaviour
             Destroy(tile);
         }
         wallArr.Clear();
+    }
+
+    private void ClearDoors()
+    {
+        foreach (GameObject door in doorArr)
+        {
+            Destroy(door);
+        }
+        doorArr.Clear();
     }
 }
