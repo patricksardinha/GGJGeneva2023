@@ -6,11 +6,11 @@ using UnityEngine;
 public class RoomGenerator : MonoBehaviour
 {
     public Animator anim;
-    public float minRoomSize = 15;
-    public float maxRoomSize = 50;
+    public int minRoomSize = 15;
+    public int maxRoomSize = 50;
 
-    [SerializeField] private float xRoom;
-    [SerializeField] private float zRoom;
+    [SerializeField] private int xRoom;
+    [SerializeField] private int zRoom;
 
     public GameObject floorPrefab;
     public GameObject frontWallPrefab;
@@ -48,29 +48,17 @@ public class RoomGenerator : MonoBehaviour
         {
             ClearDoors();
             GenerateDoors(xRoom, zRoom);
-        }
-
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            anim.Play("Fade_In");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            anim.Play("Fade_Out");
-        }
+        }       
     }
 
-    private void GenerateRoomSize(float min, float max)
+    private void GenerateRoomSize(int min, int max)
     {
         xRoom = UnityEngine.Random.Range(min, max);
         zRoom = UnityEngine.Random.Range(min, max);
     }
 
 
-    private void GenerateRoom(float xRoom, float zRoom)
+    private void GenerateRoom(int xRoom, int zRoom)
     {
         GenerateFloor(xRoom, zRoom);
         GenerateBackWalls(xRoom, zRoom);
@@ -79,7 +67,7 @@ public class RoomGenerator : MonoBehaviour
 
 
 
-    private void GenerateFloor(float xRoom, float zRoom)
+    private void GenerateFloor(int xRoom, int zRoom)
     {
         Debug.Log("Generate the Floor");
 
@@ -96,7 +84,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateBackWalls(float xRoom, float zRoom)
+    private void GenerateBackWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate Walls");
         for (int x = 0; x < xRoom; x++)
@@ -117,7 +105,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateFrontWalls(float xRoom, float zRoom)
+    private void GenerateFrontWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate front Walls");
         for (int x = 0; x < xRoom; x++)
@@ -137,7 +125,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateDoors(float xRoom, float zRoom)
+    private void GenerateDoors(int xRoom, int zRoom)
     {
         //Right door positionning
         float widthDoor = RDoor.transform.localScale.z;
