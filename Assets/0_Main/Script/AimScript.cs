@@ -31,7 +31,7 @@ public class AimScript : MonoBehaviour
         {
             return;
         }
-        input = Quaternion.Euler(0, 0, 135) * input;
+        input = Quaternion.Euler(0, 0, 45) * input;
         PlayerDirection = Quaternion.LookRotation(new Vector3(input.x, 0, input.y), Vector3.up);
         
     }
