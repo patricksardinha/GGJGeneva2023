@@ -16,8 +16,13 @@ public class P_PlayerSpells : MonoBehaviour
     private bool isAttackReady;
 
     // Collider zone of attack player
-    private MeshCollider colliderZoneMelee;
-    private MeshCollider colliderZoneRange;
+    [SerializeField]
+    GameObject colliderZoneMelee;
+    [SerializeField]
+    GameObject colliderZoneRange;
+
+    private MeshCollider meshColliderZoneMelee;
+    private MeshCollider meshColliderZoneRange;
 
     private Animator playerAnimator;
 
@@ -26,8 +31,8 @@ public class P_PlayerSpells : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         // Zone collider : Child 0 & 1 of Character gameobject
-        colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<MeshCollider>();
-        colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<MeshCollider>();
+        meshColliderZoneMelee = GetComponent<MeshCollider>();
+        meshColliderZoneRange = GetComponent<MeshCollider>();
 
         playerAnimator = GetComponent<Animator>();
         // Init attack
@@ -76,6 +81,8 @@ public class P_PlayerSpells : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy");
+            if (colliderZoneMelee.CompareTag("ZoneMelee"))
+                Debug.Log("Collision on melee zone");
         }
     }
 
@@ -110,7 +117,7 @@ public class P_PlayerSpells : MonoBehaviour
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable melee zone collider to detect melee collisions
-         colliderZoneMelee.enabled = true;
+         meshColliderZoneMelee.enabled = true;
     }
 
     /// <summary>
@@ -120,7 +127,7 @@ public class P_PlayerSpells : MonoBehaviour
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable melee zone collider
-        colliderZoneMelee.enabled = false;
+        meshColliderZoneMelee.enabled = false;
         isAttackReady = true;
     }
 
@@ -155,7 +162,7 @@ public class P_PlayerSpells : MonoBehaviour
     {
         // Animation Event Keyframe on clip animation [Start]
         // Enable range zone collider to detect range collisions
-        colliderZoneRange.enabled = true;
+        meshColliderZoneRange.enabled = true;
         Debug.Log("PlayerAttackRangeStart");
     }
 
@@ -166,7 +173,7 @@ public class P_PlayerSpells : MonoBehaviour
     {
         // Animation Event Keyframe on clip animation [End]
         // Disable range zone collider
-        colliderZoneRange.enabled = false;
+        meshColliderZoneRange.enabled = false;
         isAttackReady = true;
         Debug.Log("PlayerAttackRangeEnd");
     }

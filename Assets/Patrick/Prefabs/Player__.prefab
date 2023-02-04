@@ -1047,6 +1047,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2813896872256493768}
     m_Modifications:
+    - target: {fileID: 78725516586721616, guid: 6c355eefc1960db45b2050c091879029, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 78725516586721617, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1103,9 +1107,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoneRange
       objectReference: {fileID: 0}
+    - target: {fileID: 78725516586721620, guid: 6c355eefc1960db45b2050c091879029, type: 3}
+      propertyPath: m_TagString
+      value: ZoneRange
+      objectReference: {fileID: 0}
     - target: {fileID: 78725516586721631, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 78725516586721631, guid: 6c355eefc1960db45b2050c091879029, type: 3}
+      propertyPath: m_VersionIndex
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c355eefc1960db45b2050c091879029, type: 3}
@@ -1169,9 +1181,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoneMelee
       objectReference: {fileID: 0}
+    - target: {fileID: 6322647958111346833, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
+      propertyPath: m_TagString
+      value: ZoneMelee
+      objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346844, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322647958111346844, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322647958111346845, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346846, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_Mesh
