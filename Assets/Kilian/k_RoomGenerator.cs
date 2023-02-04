@@ -159,6 +159,9 @@ public class k_RoomGenerator : MonoBehaviour
 
         List<Vector3> spawnPosition = GenerateSpawn();
 
+        // Instanciate nb of enemy according difficulty & nb of tiles
+        // replace spawnPosition
+
         for (int i = 0; i < spawnPosition.Count; i++)
         {
             enemiesArr.Add(Instantiate(enemiesPrefabs[UnityEngine.Random.Range(0, enemiesPrefabs.Length-1)], spawnPosition[0], Quaternion.identity, roomParent));
