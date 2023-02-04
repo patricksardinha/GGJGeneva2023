@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 1867a233c9447b14c9c66294ef1ce8b6
 ModelImporter:
   serializedVersion: 21300
@@ -14,6 +15,13 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: grass_brin
     second: {fileID: 2100000, guid: 1c8d241d04c341246bf29d6ef24c5ce7, type: 2}
+=======
+guid: 0dc9a09c91bd6384ea607b87eb74e329
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+>>>>>>> Stashed changes
   materials:
     materialImportMode: 2
     materialName: 0
