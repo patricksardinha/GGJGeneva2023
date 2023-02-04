@@ -35,6 +35,11 @@ public class RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            ClearTiles();
+            GenerateFloor(xRoom, zRoom);
+            GenerateBackWalls(xRoom, zRoom);
+            GenerateFrontWalls(xRoom, zRoom);
+
             ClearDoors();
             GenerateDoors(xRoom, zRoom);
         }
