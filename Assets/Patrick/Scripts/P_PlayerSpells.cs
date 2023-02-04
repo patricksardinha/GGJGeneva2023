@@ -30,9 +30,11 @@ public class P_PlayerSpells : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        // Zone collider : Child 0 & 1 of Character gameobject
-        meshColliderZoneMelee = GetComponent<MeshCollider>();
-        meshColliderZoneRange = GetComponent<MeshCollider>();
+        // Zone collider to detect collisions
+        meshColliderZoneMelee = colliderZoneMelee.GetComponent<MeshCollider>();
+        meshColliderZoneRange = colliderZoneRange.GetComponent<MeshCollider>();
+        meshColliderZoneMelee.enabled = false;
+        meshColliderZoneRange.enabled = false;
 
         playerAnimator = GetComponent<Animator>();
         // Init attack
@@ -81,8 +83,17 @@ public class P_PlayerSpells : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy");
-            if (colliderZoneMelee.CompareTag("ZoneMelee"))
+            if (meshColliderZoneMelee.enabled == true)
+            {
                 Debug.Log("Collision on melee zone");
+            }
+            else if (meshColliderZoneRange.enabled == true)
+            {
+                Debug.Log("Collision on range zone");
+            }
+            else {
+                Debug.Log("Collision on player");
+            } 
         }
     }
 
@@ -107,6 +118,8 @@ public class P_PlayerSpells : MonoBehaviour
 
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
             playerAnimator.SetTrigger("attackMelee");
+
+            // Instanciate 
         }
     }
 
@@ -163,7 +176,6 @@ public class P_PlayerSpells : MonoBehaviour
         // Animation Event Keyframe on clip animation [Start]
         // Enable range zone collider to detect range collisions
         meshColliderZoneRange.enabled = true;
-        Debug.Log("PlayerAttackRangeStart");
     }
 
     /// <summary>
@@ -175,7 +187,6 @@ public class P_PlayerSpells : MonoBehaviour
         // Disable range zone collider
         meshColliderZoneRange.enabled = false;
         isAttackReady = true;
-        Debug.Log("PlayerAttackRangeEnd");
     }
 
 }

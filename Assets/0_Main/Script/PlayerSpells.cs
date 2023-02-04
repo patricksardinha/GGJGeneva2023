@@ -46,6 +46,8 @@ public class PlayerSpells : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy");
+            if (character.gameObject.CompareTag("ZoneMelee"))
+                Debug.Log("Melee collision");
         }
     }
 
