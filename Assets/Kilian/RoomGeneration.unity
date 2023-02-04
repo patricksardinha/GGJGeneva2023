@@ -431,12 +431,15 @@ MonoBehaviour:
   anim: {fileID: 485702475}
   minRoomSize: 15
   maxRoomSize: 50
-  xRoom: 30
-  zRoom: 20
+  xRoom: 0
+  zRoom: 0
   floorPrefab:
   - {fileID: 8470224891321930635, guid: 99a4dd2569822b844be8858a596dbf07, type: 3}
   frontWallPrefab: {fileID: 1344900538982879082, guid: b539b7b1f8ec6fc4990473c3f4d9052e, type: 3}
   wallPrefab: {fileID: 1344900538982879082, guid: cebf16b2d9d1944489bf786bcc71d197, type: 3}
+  enemiesPrefabs:
+  - {fileID: 7105800791556273013, guid: 3627aa54a008aa44381102427d91f66b, type: 3}
+  - {fileID: 2786948808328329320, guid: dcffaa3c72924864dbcba5a8ac008350, type: 3}
   RDoor: {fileID: 8171204958310405383, guid: 0e886f79e891d934d8e959329ddcccaa, type: 3}
   LDoor: {fileID: 2939890091860581603, guid: ba3681b03a3e30941a90966c14e39261, type: 3}
   roomParent: {fileID: 347332216}

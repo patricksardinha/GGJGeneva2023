@@ -6,15 +6,16 @@ using UnityEngine;
 public class k_RoomGenerator : MonoBehaviour
 {
     public Animator anim;
-    public float minRoomSize = 15;
-    public float maxRoomSize = 50;
+    public int minRoomSize = 15;
+    public int maxRoomSize = 50;
 
-    [SerializeField] private float xRoom;
-    [SerializeField] private float zRoom;
+    [SerializeField] private int xRoom;
+    [SerializeField] private int zRoom;
 
     public GameObject[] floorPrefab;
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
+    public GameObject[] enemiesPrefabs;
 
     public GameObject RDoor;
     public GameObject LDoor;
@@ -23,6 +24,7 @@ public class k_RoomGenerator : MonoBehaviour
     private ArrayList floorArr = new ArrayList();
     private ArrayList wallArr = new ArrayList();
     private ArrayList doorArr = new ArrayList();
+    private ArrayList enemiesArr = new ArrayList();
 
     private (int tileID, Vector3 tilePosition) tileObj;
 
@@ -63,23 +65,25 @@ public class k_RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateRoomSize(float min, float max)
+    private void GenerateRoomSize(int min, int max)
     {
         xRoom = UnityEngine.Random.Range(min, max);
         zRoom = UnityEngine.Random.Range(min, max);
     }
 
 
-    private void GenerateRoom(float xRoom, float zRoom)
+    private void GenerateRoom(int xRoom, int zRoom)
     {
         GenerateFloor(xRoom, zRoom);
         GenerateBackWalls(xRoom, zRoom);
         GenerateFrontWalls(xRoom, zRoom);
+
+        GenerateEnemies(xRoom, zRoom);
     }
 
 
 
-    private void GenerateFloor(float xRoom, float zRoom)
+    private void GenerateFloor(int xRoom, int zRoom)
     {
         Debug.Log("Generate the Floor");
 
@@ -96,7 +100,7 @@ public class k_RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateBackWalls(float xRoom, float zRoom)
+    private void GenerateBackWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate Walls");
         for (int x = 0; x < xRoom; x++)
@@ -117,7 +121,7 @@ public class k_RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateFrontWalls(float xRoom, float zRoom)
+    private void GenerateFrontWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate front Walls");
         for (int x = 0; x < xRoom; x++)
@@ -137,7 +141,7 @@ public class k_RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateDoors(float xRoom, float zRoom)
+    private void GenerateDoors(int xRoom, int zRoom)
     {
         //Right door positionning
         float widthDoor = RDoor.transform.localScale.z;
@@ -150,12 +154,34 @@ public class k_RoomGenerator : MonoBehaviour
         doorArr.Add(Instantiate(LDoor, pos, Quaternion.identity, roomParent));
     }
 
+    private void GenerateEnemies(int xRoom, int zRoom)
+    {
+
+        List<Vector3> spawnPosition = GenerateSpawn();
+
+        for (int i = 0; i < spawnPosition.Count; i++)
+        {
+            enemiesArr.Add(Instantiate(enemiesPrefabs[UnityEngine.Random.Range(0, enemiesPrefabs.Length-1)], spawnPosition[0], Quaternion.identity, roomParent));
+        }
+    }
+
+    private List<Vector3> GenerateSpawn()
+    {
+        List<Vector3> posSpawner = new List<Vector3>();
+
+        int randX = UnityEngine.Random.Range(8, xRoom);
+        int randZ = UnityEngine.Random.Range(8, zRoom);
+        posSpawner.Add(new Vector3(randX, 0.5f, randZ));
+
+        return posSpawner;
+    }
 
 
     private void ClearRoom()
     {
         ClearTiles();
         ClearDoors();
+        ClearEnemies();
     }
 
     private void ClearTiles()
@@ -180,5 +206,14 @@ public class k_RoomGenerator : MonoBehaviour
             Destroy(door);
         }
         doorArr.Clear();
+    }
+
+    private void ClearEnemies()
+    {
+        foreach (GameObject enemy in enemiesArr)
+        {
+            Destroy(enemy);
+        }
+        enemiesArr.Clear();
     }
 }
