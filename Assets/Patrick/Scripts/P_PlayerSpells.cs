@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class P_PlayerSpells : MonoBehaviour
 {
+    [SerializeField]
+    private P_SpellsBehaviour spellBehaviourScript;
+
     private Rigidbody rb;
 
     [SerializeField]
@@ -17,22 +20,31 @@ public class P_PlayerSpells : MonoBehaviour
 
     // Collider zone of attack player
     [SerializeField]
-    GameObject colliderZoneMelee;
+    private GameObject ZoneMelee;
     [SerializeField]
-    GameObject colliderZoneRange;
+    private GameObject ZoneRange;
 
     private MeshCollider meshColliderZoneMelee;
     private MeshCollider meshColliderZoneRange;
 
     private Animator playerAnimator;
 
+    [SerializeField]
+    private GameObject meleeSpellPrefab;
+    //[SerializeField]
+    //private GameObject rangeSpellPrefab;
+
+    public Transform spellParent;
+    // Array to stock lauched spells
+    private ArrayList spellsArray = new ArrayList();
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         // Zone collider to detect collisions
-        meshColliderZoneMelee = colliderZoneMelee.GetComponent<MeshCollider>();
-        meshColliderZoneRange = colliderZoneRange.GetComponent<MeshCollider>();
+        meshColliderZoneMelee = ZoneMelee.GetComponent<MeshCollider>();
+        meshColliderZoneRange = ZoneRange.GetComponent<MeshCollider>();
         meshColliderZoneMelee.enabled = false;
         meshColliderZoneRange.enabled = false;
 
@@ -119,7 +131,11 @@ public class P_PlayerSpells : MonoBehaviour
             // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
             playerAnimator.SetTrigger("attackMelee");
 
-            // Instanciate 
+            // Instanciate Go related to the melee spell
+            spellsArray.Add(Instantiate(meleeSpellPrefab, new Vector3(0,0,0), Quaternion.identity, spellParent));
+            // Play spell animation
+            spellBehaviourScript.spellMelee();
+
         }
     }
 

@@ -450,9 +450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e57d32d1c786c64795b9cbfafe4da19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellBehaviourScript: {fileID: 0}
   playerSpeed: 5
-  colliderZoneMelee: {fileID: 973476129000940920}
-  colliderZoneRange: {fileID: 2957989692487837948}
+  ZoneMelee: {fileID: 973476129000940920}
+  ZoneRange: {fileID: 2957989692487837948}
+  meleeSpellPrefab: {fileID: 919132149155446097, guid: 987d1a4515f00a54796008ddeb739724, type: 3}
+  spellParent: {fileID: 0}
 --- !u!1 &3423652341067276585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 78725516586721631, guid: 6c355eefc1960db45b2050c091879029, type: 3}
       propertyPath: m_VersionIndex
-      value: 65
+      value: 83
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c355eefc1960db45b2050c091879029, type: 3}
@@ -1198,7 +1201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346844, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1391
+      value: 1409
       objectReference: {fileID: 0}
     - target: {fileID: 6322647958111346845, guid: a6b2b0ef72a1e584d86c51b1f7c7562c, type: 3}
       propertyPath: m_Enabled

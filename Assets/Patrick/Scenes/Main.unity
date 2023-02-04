@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-364976
+  m_Name: pb_Mesh-377044
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -287,6 +287,51 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &159135581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159135582}
+  - component: {fileID: 159135583}
+  m_Layer: 0
+  m_Name: SpellParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &159135582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159135581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1141157, y: -0.5656636, z: 2.3705578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159135583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159135581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c011c83ab21114741a39c50693dbdcbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpellScript: {fileID: 0}
 --- !u!1 &184588679
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +432,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-364988
+  m_Name: pb_Mesh-377056
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -942,13 +987,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 140092381078388300, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
+      propertyPath: spellParent
+      value: 
+      objectReference: {fileID: 159135582}
+    - target: {fileID: 140092381078388300, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
+      propertyPath: meleeSpellPrefab
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 814e90ae5f56d374395b789faa04e19f, type: 3}
     - target: {fileID: 973476129000940917, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 69762571}
     - target: {fileID: 973476129000940917, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1394
+      value: 1412
       objectReference: {fileID: 0}
     - target: {fileID: 973476129000940918, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
       propertyPath: m_Mesh
@@ -964,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 436587020}
     - target: {fileID: 2957989692487837943, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
       propertyPath: m_VersionIndex
-      value: 68
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 2957989692487837945, guid: 2b8947087e0e6cf48826797b1750b75c, type: 3}
       propertyPath: m_Mesh
