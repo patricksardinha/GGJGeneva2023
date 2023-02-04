@@ -14,6 +14,9 @@ public class PlayerSpells : MonoBehaviour
     private MeshCollider colliderZoneMelee;
     private MeshCollider colliderZoneRange;
 
+    [SerializeField]
+    private GameObject character;
+
     private Animator playerAnimator;
 
     // TODO:SetFloat speedPlayer to enable running animation
@@ -23,8 +26,8 @@ public class PlayerSpells : MonoBehaviour
     private void Start()
     {
         // Zone collider : Child 0 & 1 of Character gameobject
-        colliderZoneMelee = gameObject.transform.GetChild(0).GetComponent<MeshCollider>();
-        colliderZoneRange = gameObject.transform.GetChild(1).GetComponent<MeshCollider>();
+        colliderZoneMelee = character.transform.GetChild(0).GetComponent<MeshCollider>();
+        colliderZoneRange = character.transform.GetChild(1).GetComponent<MeshCollider>();
 
         playerAnimator = GetComponent<Animator>();
 
