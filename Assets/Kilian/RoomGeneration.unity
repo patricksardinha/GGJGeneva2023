@@ -174,10 +174,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1867a233c9447b14c9c66294ef1ce8b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: edca8ae9d78a9e7418f1391623f26109, type: 2}
     - target: {fileID: 919132149155446097, guid: 1867a233c9447b14c9c66294ef1ce8b6, type: 3}
       propertyPath: m_Name
       value: ground_tile_grass
       objectReference: {fileID: 0}
+    - target: {fileID: 4538125027007600859, guid: 1867a233c9447b14c9c66294ef1ce8b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e319efbb160e6e42b59ee8c0c966df0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1867a233c9447b14c9c66294ef1ce8b6, type: 3}
 --- !u!1 &192973422
