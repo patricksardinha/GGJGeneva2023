@@ -12,6 +12,8 @@ public class k_RoomGenerator : MonoBehaviour
 
     public List<float> anglesForTiles = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
 
+    private List<int> rouletTen = new List<int>() { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1};
+
 
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
@@ -100,7 +102,7 @@ public class k_RoomGenerator : MonoBehaviour
                 Vector3 tilePosition = new Vector3(x, 0, z);
                 tileObj = (tileID, tilePosition);
                 
-                floorArr.Add(Instantiate(floorPrefab[UnityEngine.Random.Range(0,floorPrefab.Length)], tileObj.tilePosition, Quaternion.Euler(0, anglesForTiles[UnityEngine.Random.Range(0, anglesForTiles.Count)], 0), roomParent));
+                floorArr.Add(Instantiate(floorPrefab[rouletTen[UnityEngine.Random.Range(0,rouletTen.Count)]], tileObj.tilePosition, Quaternion.Euler(0, anglesForTiles[UnityEngine.Random.Range(0, anglesForTiles.Count)], 0), roomParent));
             }
         }
     }
