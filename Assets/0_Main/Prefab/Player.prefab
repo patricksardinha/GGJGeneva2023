@@ -330,7 +330,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3264497392735068660}
         m_TargetAssemblyTypeName: PlayerSpells, Assembly-CSharp
         m_MethodName: OnPlayerAttackMelee
         m_Mode: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
     m_ActionName: Player/Attack one[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3264497392735068660}
         m_TargetAssemblyTypeName: PlayerSpells, Assembly-CSharp
         m_MethodName: OnPlayerAttackRange
         m_Mode: 0
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0cacbd8c745704bb94d0ac62d4e7de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 2851848056463422007}
 --- !u!1 &303594545464826034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,7 +1219,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 17
+  m_VersionIndex: 125
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1756,7 +1757,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1343
+  m_VersionIndex: 1451
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
