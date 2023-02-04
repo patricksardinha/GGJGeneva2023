@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpells : MonoBehaviour
 {
-    public GameObject meleeAttack;
-
     [SerializeField]
     private GameObject character;
 
@@ -18,9 +16,9 @@ public class PlayerSpells : MonoBehaviour
     private float timeMeleeAttack;
     [SerializeField]
     private float timeBetweenRangeAttack;
-    private float timeRangeAttack; 
+    private float timeRangeAttack;
 
-
+    public PlayerScript playerScript;
 
     List<GameObject> EnnemiesInMelee = new List<GameObject>();
     List<GameObject> EnnemiesInRange = new List<GameObject>();
@@ -56,7 +54,7 @@ public class PlayerSpells : MonoBehaviour
             //Deals damage to every ennemy in the area
             foreach (GameObject ennemy in EnnemiesInMelee)
             {
-                ennemy.GetComponent<EnnemyScript>().TakeDamage(5f);
+                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
             }
 
             //Must instanciate the gameobject for melee attack
@@ -81,7 +79,7 @@ public class PlayerSpells : MonoBehaviour
             //Deals damage to every ennemy in the area
             foreach (GameObject ennemy in EnnemiesInRange)
             {
-                ennemy.GetComponent<EnnemyScript>().TakeDamage(2f);
+                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
             }
 
             //Must instanciate the gameobject for melee attack

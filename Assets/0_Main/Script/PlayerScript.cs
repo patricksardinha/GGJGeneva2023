@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
 
     [SerializeField] private float life = 50f;
+    public float meleeDamage = 5f;
+    public float rangeDamage = 2f;
 
     // Start is called before the first frame update
     void Start()

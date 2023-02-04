@@ -49,8 +49,9 @@ public class EnnemyScript : MonoBehaviour
         Debug.Log("Ennemy life: " + life);
         //need to use taking damage animation
         //and if life <= 0, need to use death animation
-        Destroy(gameObject);
+        if(life <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
-
-
 }
