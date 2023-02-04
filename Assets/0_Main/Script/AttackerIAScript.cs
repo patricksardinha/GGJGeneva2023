@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackerIAScript : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +32,12 @@ public class AttackerIAScript : MonoBehaviour
             }
             else if (DistanceToTarget < 4) 
             {
-                transform.Translate(Vector3.back * Time.deltaTime * speed/5);
+                transform.Translate(Vector3.back * Time.deltaTime * speed/2);
                 //need to use walking animation
             }
             else 
             {
-                transform.Translate(Vector3.left * Time.deltaTime * speed/10);
+                transform.Translate(Vector3.left * Time.deltaTime * speed/2);
                 //need to use attack animation
             }
             transform.position.Set(transform.position.x, 1, transform.position.z);

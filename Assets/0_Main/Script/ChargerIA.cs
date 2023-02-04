@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChargerIA : MonoBehaviour
 {
     [SerializeField] private GameObject target;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 5.0f;
 
     private bool detectTarget = false;
     
@@ -18,6 +18,7 @@ public class ChargerIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 
@@ -32,9 +33,9 @@ public class ChargerIA : MonoBehaviour
             {
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }
+
             
-            transform.position.Set(transform.position.x, 1, transform.position.z);
-            
+
         }
         else if (target != null && !detectTarget)
         {
