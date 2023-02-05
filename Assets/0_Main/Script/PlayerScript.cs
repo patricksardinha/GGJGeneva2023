@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField] private GameOverManager GameOverManager_Script;
     [SerializeField] private GameObject HealthBar;
     [SerializeField] private float life = 50f;
     public float meleeDamage = 5f;
@@ -31,6 +32,11 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Player life: " + life);
         //need to use taking damage animation
         //and if life <= 0, need to use death animation
+
+        if (life <= 0)
+        {
+            Death();
+        }
     }
 
     public void ResetPlayerToSpawnPoint()
@@ -38,4 +44,8 @@ public class PlayerScript : MonoBehaviour
         //need to reset to spawn point
     }
 
+    public void Death()
+    {
+        GameOverManager_Script.GameOver();
+    }
 }
