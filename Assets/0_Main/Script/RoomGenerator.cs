@@ -81,7 +81,6 @@ public class RoomGenerator : MonoBehaviour
         GenerateFrontWalls(xRoom, zRoom);
 
         GenerateEnemies(xRoom, zRoom);
-
     }
 
     private void GenerateFloor(int xRoom, int zRoom)

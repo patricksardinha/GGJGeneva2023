@@ -231,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1974287644566443314}
   speed: 500
+  isAttacking: 0
 --- !u!114 &303594544391727684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,15 +420,14 @@ MonoBehaviour:
   character: {fileID: 2851848056463422007}
   rootAttackPrefab: {fileID: 851200043647582011, guid: d6c7e7edcc7584d429acf17869d7856c, type: 3}
   MeleeRootSpawns:
+  - {fileID: 7914274614484306828}
   - {fileID: 4226274766974434032}
   - {fileID: 5738845036518100675}
-  - {fileID: 7914274614484306828}
   RangeRootSpawns:
   - {fileID: 7588792102293219778}
   - {fileID: 4452991852892210737}
   - {fileID: 8076932483866349359}
-  timeBetweenMeleeAttack: 1
-  timeBetweenRangeAttack: 1
+  timeBetweenAttacks: 0.8
   playerScript: {fileID: 5839530875063363504}
 --- !u!54 &1974287644566443314
 Rigidbody:
@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb3da410ad1da144a238c7b7a2bc8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingScript: {fileID: 303594544391727686}
 --- !u!1 &328801126875310979
 GameObject:
   m_ObjectHideFlags: 0

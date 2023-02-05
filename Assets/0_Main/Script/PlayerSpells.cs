@@ -16,11 +16,8 @@ public class PlayerSpells : MonoBehaviour
     private Animator playerAnimator;
 
     [SerializeField]
-    private float timeBetweenMeleeAttack;
-    private float timeMeleeAttack;
-    [SerializeField]
-    private float timeBetweenRangeAttack;
-    private float timeRangeAttack;
+    private float timeBetweenAttacks;
+    private float timeAttack;
 
     public PlayerScript playerScript;
 
@@ -35,25 +32,23 @@ public class PlayerSpells : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
 
-        timeMeleeAttack = timeBetweenMeleeAttack;
-        timeRangeAttack = timeBetweenRangeAttack;
+        timeAttack = timeBetweenAttacks;
     }
 
     private void Update()
     {
-        timeMeleeAttack -= Time.deltaTime;
-        timeRangeAttack -= Time.deltaTime;
+        timeAttack -= Time.deltaTime;
     }
 
 
     public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
         // The player can attack
-        if (timeMeleeAttack <= 0)
+        if (timeAttack <= 0)
         {
             Debug.Log("player is attacking melee");
 
-            playerAnimator.SetTrigger("attackMelee");
+            playerAnimator.Play("AttackMelee");
 
             //Deals damage to every ennemy in the area
             foreach (GameObject ennemy in EnnemiesInMelee)
@@ -61,19 +56,45 @@ public class PlayerSpells : MonoBehaviour
                 ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
             }
 
-            foreach (Transform spawn in MeleeRootSpawns)
-            {
-                //Must instanciate the gameobject for melee attack
-                Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
-            }
+            //foreach (Transform spawn in MeleeRootSpawns)
+            //{
+            //    //Must instanciate the gameobject for melee attack
+            //    Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+            //}
 
-            
+
+            IEnumerator cor = Wait(.1f, MeleeRootSpawns);
+            StartCoroutine(cor);
+
 
             //Reset time between attacks
-            timeMeleeAttack = timeBetweenMeleeAttack;
+            timeAttack = timeBetweenAttacks;
         }
     }
 
+
+    public void OnPlayerAttackRange(InputAction.CallbackContext context)
+    {
+        // The player can attack
+        if (timeAttack <= 0)
+        {
+            Debug.Log("player is attacking range");
+
+            playerAnimator.Play("AttackRange");
+
+            //Deals damage to every ennemy in the area
+            foreach (GameObject ennemy in EnnemiesInRange)
+            {
+                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
+            }
+
+            IEnumerator cor = Wait(.1f, RangeRootSpawns);
+            StartCoroutine(cor);
+
+            //Reset time between attacks
+            timeAttack = timeBetweenAttacks;
+        }
+    }
 
     IEnumerator Wait(float sec, Transform[] spawn)
     {
@@ -87,32 +108,6 @@ public class PlayerSpells : MonoBehaviour
         yield return new WaitForSeconds(sec);
     }
 
-
-
-    public void OnPlayerAttackRange(InputAction.CallbackContext context)
-    {
-        Debug.Log("player is attacking range");
-
-        // The player can attack
-        if (timeRangeAttack <= 0)
-        {
-            Debug.Log("(attackRange)");
-
-            playerAnimator.SetTrigger("attackRange");
-
-            //Deals damage to every ennemy in the area
-            foreach (GameObject ennemy in EnnemiesInRange)
-            {
-                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
-            }
-
-            IEnumerator cor = Wait(.1f, RangeRootSpawns);
-            StartCoroutine(cor);
-
-            //Reset time between attacks
-            timeRangeAttack = timeBetweenRangeAttack;
-        }
-    }
 
     internal void GetEnemyInMelee(GameObject gameObject, bool inArea)
     {

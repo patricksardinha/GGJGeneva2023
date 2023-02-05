@@ -13,6 +13,7 @@ public class RootLifeTime : MonoBehaviour
 
         if (lifeTime <= 0)
         {
+
             Destroy(gameObject);
         }
     }
