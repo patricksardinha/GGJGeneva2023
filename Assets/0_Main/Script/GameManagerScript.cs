@@ -7,9 +7,15 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private RoomGenerator roomGeneratorScript;
+    [SerializeField] private Animator animatorFade;
+    [SerializeField] private GameObject UI;
+    [SerializeField] private PlayerSpells playerSpells;
+    [SerializeField] private MusicSelector musicSelector;
 
     private ArrayList ennemyArrayList = new ArrayList();
     private bool doorCreated = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +44,7 @@ public class GameManagerScript : MonoBehaviour
                 Destroy(ennemy);
             }
             ennemyArrayList.Clear();
+            playerSpells.resetPlayerAttack();
             CreateDoor();
             doorCreated = true;
         }
@@ -50,6 +57,7 @@ public class GameManagerScript : MonoBehaviour
 
     void CreateDoor()
     {
+        musicSelector.AmbiantTrack();
         roomGeneratorScript.GenerateDoors();
         doorCreated = true;
     }
@@ -65,6 +73,7 @@ public class GameManagerScript : MonoBehaviour
     }
     void CreateRoom()
     {
+        musicSelector.EnemyTrack();
         roomGeneratorScript.initiateRoom();
         foreach (GameObject ennemy in ennemyArrayList)
         {
@@ -82,11 +91,14 @@ public class GameManagerScript : MonoBehaviour
     }
     void Darkness()
     {
-        //darkness
+        UI.SetActive(false);
+        animatorFade.Play("Fade_In");
     }
     void Lighten()
     {
-        //lighten
+        
+        animatorFade.Play("Fade_Out");
+        UI.SetActive(true);
     }
 
 }
