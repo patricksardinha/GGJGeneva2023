@@ -53,7 +53,10 @@ public class PlayerSpells : MonoBehaviour
             //Deals damage to every ennemy in the area
             foreach (GameObject ennemy in EnnemiesInMelee)
             {
-                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
+                if (!ennemy.GetComponent<EnnemyScript>().isKill)
+                {
+                    ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
+                }
             }
 
             //foreach (Transform spawn in MeleeRootSpawns)
@@ -85,7 +88,10 @@ public class PlayerSpells : MonoBehaviour
             //Deals damage to every ennemy in the area
             foreach (GameObject ennemy in EnnemiesInRange)
             {
-                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
+                if (!ennemy.GetComponent<EnnemyScript>().isKill)
+                {
+                    ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
+                }
             }
 
             IEnumerator cor = Wait(.1f, RangeRootSpawns);
