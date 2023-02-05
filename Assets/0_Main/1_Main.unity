@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -310,7 +310,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-395442
+  m_Name: pb_Mesh-836912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -844,7 +844,7 @@ RectTransform:
   m_Children:
   - {fileID: 2019441122}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -947,7 +947,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!850595691 &819422444
 LightingSettings:
@@ -1074,6 +1074,7 @@ MonoBehaviour:
   - {fileID: 8613022530119195433, guid: bc138dd33846d8c45968ed124f60d3c7, type: 3}
   - {fileID: 3611656996791509369, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
   - {fileID: 3900465637033647844, guid: 258a279551ad90c4c96837475212e40d, type: 3}
+  racinePrefab: {fileID: 3281139634011360120, guid: f6c6c000848477b4ab9220de6d929f94, type: 3}
   enemySize: 3
   RDoor: {fileID: 8171204958310405383, guid: bfa828a33631eb940a7710ec4afcc6fe, type: 3}
   LDoor: {fileID: 2939890091860581603, guid: dcbb0aff0d67f1c42adfbf146ab1e113, type: 3}
@@ -1200,7 +1201,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-395428
+  m_Name: pb_Mesh-836898
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1931,7 +1932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1259857260 stripped
 AudioSource:
@@ -2416,7 +2417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1974287644566443313 stripped
 Transform:
