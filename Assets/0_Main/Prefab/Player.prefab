@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5839530875063363504}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,6 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948fe2a9b5ff95443a4146a989d5d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverManager_Script: {fileID: 0}
+  HealthBar: {fileID: 0}
   life: 50
   meleeDamage: 5
   rangeDamage: 2
