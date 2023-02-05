@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    [SerializeField] private GameObject HealthBar;
     [SerializeField] private float life = 50f;
     public float meleeDamage = 5f;
     public float rangeDamage = 2f;
@@ -12,13 +12,13 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HealthBar.GetComponent<HealthBar>().SetMaxHealth(life);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        HealthBar.GetComponent<HealthBar>().SetHealth(life);
     }
     void FixedUpdate()
     {
