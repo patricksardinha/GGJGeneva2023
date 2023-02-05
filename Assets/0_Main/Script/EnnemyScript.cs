@@ -11,6 +11,7 @@ public class EnnemyScript : MonoBehaviour
     [SerializeField] private float attackDamage = 1f;
     [SerializeField] private float life = 1f;
     [SerializeField] private GameObject IaBehavior;
+    public bool isKill = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class EnnemyScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public bool TakeDamage(float damage)
     {
         life -= damage;
         Debug.Log("Ennemy life: " + life);
@@ -51,7 +52,11 @@ public class EnnemyScript : MonoBehaviour
         //and if life <= 0, need to use death animation
         if(life <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+            isKill = true;
+            return true;
         }
+        return false;
     }
 }

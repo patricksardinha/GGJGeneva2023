@@ -228,7 +228,7 @@ public class RoomGenerator : MonoBehaviour
     {
         ClearTiles();
         ClearDoors();
-        ClearEnemies();
+        //ClearEnemies();
     }
 
     private void ClearTiles()
