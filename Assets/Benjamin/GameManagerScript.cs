@@ -6,44 +6,42 @@ public class GameManagerScript : MonoBehaviour
 {
 
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject RoomGenerator;
+    [SerializeField] private RoomGenerator roomGeneratorScript;
 
     private ArrayList ennemyArrayList = new ArrayList();
     private bool doorCreated = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ennemyArrayList = roomGeneratorScript.GetEnemies();
+        CreateRoom();
     }
 
     // Update is called once per frame
     void Update()
     {
-     /*   if (ennemyArrayList.Count == 0 && !doorCreated)
+        bool allDead = true;
+        foreach (GameObject ennemy in ennemyArrayList)
         {
-            createDoor();
+            if (!ennemy.GetComponent<EnnemyScript>().isKill)
+            {
+                allDead = false;
+                break;
+            }
+            
         }
-     */
-    }
-/*
-    void CreateDoor()
-    {
-        doorCreated = true;
-        //create door from pcg
+
+        if (allDead && !doorCreated)
+        {
+            CreateDoor();
+            doorCreated = true;
+        }
     }
 
-    void ChangeRoom()
+    void CreateDoor()
     {
-        Darkness();
-        ClearRoom();
-        CreateRoom();
-        CreateEnemys();
-    }
-    void StartRoom()
-    {
-        CreateRoom();
-        CreateEnemys();
-        
+        roomGeneratorScript.GenerateDoors();
+        doorCreated = true;
     }
 
     void RespawnPlayer()
@@ -53,36 +51,28 @@ public class GameManagerScript : MonoBehaviour
 
     void ClearRoom()
     {
-        RoomGenerator.clearRoom();
+        roomGeneratorScript.ClearRoom();
     }
     void CreateRoom()
     {
-        RoomGenerator.GetComponent<RoomGenerator>().GenerateRoom();
+        roomGeneratorScript.initiateRoom();
     }
 
-    void CreateEnemys()
+    void ChangingRoom()
     {
-        RoomGenerator.GetComponent<RoomGenerator>().GenerateEnnemy();
+        Darkness();
+        ClearRoom();
+        CreateRoom();
+        RespawnPlayer();
+        Lighten();
     }
-
-    void destroyEnemy()
-    {
-        RoomGenerator.GetComponent<RoomGenerator>().DestroyEnnemy();
-    }
-
-    void destroyRoom()
-    {
-        RoomGenerator.GetComponent<RoomGenerator>().DestroyRoom();
-    }
-
-    void createDoorRoom()
-    {
-        RoomGenerator.GetComponent<RoomGenerator>().CreateDoor();
-    }
-
     void Darkness()
     {
         //darkness
     }
-*/
+    void Lighten()
+    {
+        //lighten
+    }
+
 }

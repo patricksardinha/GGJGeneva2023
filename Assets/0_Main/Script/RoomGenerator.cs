@@ -38,14 +38,13 @@ public class RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateRoomSize(minRoomSize, maxRoomSize);
-
-        GenerateRoom(xRoom, zRoom);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ClearRoom();
@@ -58,8 +57,14 @@ public class RoomGenerator : MonoBehaviour
             ClearDoors();
             GenerateDoors(xRoom, zRoom);
         }
+        */
     }
 
+    public void initiateRoom()
+    {
+        GenerateRoomSize(minRoomSize, maxRoomSize);
+        GenerateRoom();
+    }
     private void GenerateRoomSize(int min, int max)
     {
         xRoom = UnityEngine.Random.Range(min, max);
@@ -72,18 +77,18 @@ public class RoomGenerator : MonoBehaviour
     }
 
 
-    private void GenerateRoom(int xRoom, int zRoom)
+    private void GenerateRoom()
     {
         roomLevel++;
 
-        GenerateFloor(xRoom, zRoom);
-        GenerateBackWalls(xRoom, zRoom);
-        GenerateFrontWalls(xRoom, zRoom);
+        GenerateFloor();
+        GenerateBackWalls();
+        GenerateFrontWalls();
 
-        GenerateEnemies(xRoom, zRoom);
+        GenerateEnemies();
     }
 
-    private void GenerateFloor(int xRoom, int zRoom)
+    private void GenerateFloor()
     {
         Debug.Log("Generate the Floor");
 
@@ -100,7 +105,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateBackWalls(int xRoom, int zRoom)
+    private void GenerateBackWalls()
     {
         Debug.Log("Generate Walls");
         for (int x = 0; x < xRoom + 1; x++)
@@ -121,7 +126,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateFrontWalls(int xRoom, int zRoom)
+    private void GenerateFrontWalls()
     {
         Debug.Log("Generate front Walls");
         for (int x = -1; x < xRoom + 1; x++)
@@ -141,7 +146,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateDoors(int xRoom, int zRoom)
+    public void GenerateDoors()
     {
         //Right door positionning
         float widthDoor = RDoor.transform.localScale.z;
@@ -154,7 +159,7 @@ public class RoomGenerator : MonoBehaviour
         doorArr.Add(Instantiate(LDoor, pos, Quaternion.identity, roomParent));
     }
 
-    private void GenerateEnemies(int xRoom, int zRoom)
+    private void GenerateEnemies()
     {
 
         List<Vector3> spawnPosition = GenerateSpawn();
@@ -224,7 +229,7 @@ public class RoomGenerator : MonoBehaviour
         return difficulty;
     }
 
-    private void ClearRoom()
+    public void ClearRoom()
     {
         ClearTiles();
         ClearDoors();
@@ -262,5 +267,10 @@ public class RoomGenerator : MonoBehaviour
             Destroy(enemy);
         }
         enemiesArr.Clear();
+    }
+
+    public ArrayList GetEnemies()
+    {
+        return enemiesArr;
     }
 }
