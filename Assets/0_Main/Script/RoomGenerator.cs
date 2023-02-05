@@ -70,9 +70,9 @@ public class RoomGenerator : MonoBehaviour
         xRoom = UnityEngine.Random.Range(min, max);
         zRoom = UnityEngine.Random.Range(min, max);
 
-        if (xRoom % 2 == 0)
+        if (xRoom % 2 != 0)
             xRoom++;
-        if (zRoom % 2 == 0)
+        if (zRoom % 2 != 0)
             zRoom++;
     }
 
@@ -108,7 +108,7 @@ public class RoomGenerator : MonoBehaviour
     private void GenerateBackWalls()
     {
         Debug.Log("Generate Walls");
-        for (int x = 0; x < xRoom + 1; x++)
+        for (int x = -2; x < xRoom + 1; x = x+2)
         {
             int wallID = 1;
             Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y / 2, zRoom);
@@ -116,7 +116,7 @@ public class RoomGenerator : MonoBehaviour
             wallArr.Add(Instantiate(wallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
 
-        for (int z = 0; z < zRoom; z++)
+        for (int z = -2; z < zRoom; z = z+2)
         {
             int wallID = 1;
             Vector3 wallPosition = new Vector3(xRoom, wallPrefab.transform.localScale.y / 2, z);
@@ -129,18 +129,18 @@ public class RoomGenerator : MonoBehaviour
     private void GenerateFrontWalls()
     {
         Debug.Log("Generate front Walls");
-        for (int x = -1; x < xRoom + 1; x++)
+        for (int x = -2; x < xRoom + 1; x = x+2)
         {
             int frontWallID = 1;
-            Vector3 frontWallPosition = new Vector3(x, (-frontWallPrefab.transform.localScale.y/2)+1, -1);
+            Vector3 frontWallPosition = new Vector3(x, (-frontWallPrefab.transform.localScale.y/2)+1, -2);
             tileObj = (frontWallID, frontWallPosition);
             wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
 
-        for (int z = 0; z < zRoom + 1; z++)
+        for (int z = 0; z < zRoom + 1; z = z + 2)
         {
             int frontWallID = 1;
-            Vector3 frontWallPosition = new Vector3(-1, (-frontWallPrefab.transform.localScale.y / 2) + 1, z);
+            Vector3 frontWallPosition = new Vector3(-2, (-frontWallPrefab.transform.localScale.y / 2) + 1, z);
             tileObj = (frontWallID, frontWallPosition);
             wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
