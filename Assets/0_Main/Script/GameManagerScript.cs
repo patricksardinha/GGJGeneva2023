@@ -33,6 +33,11 @@ public class GameManagerScript : MonoBehaviour
 
         if (allDead && !doorCreated)
         {
+            foreach (GameObject ennemy in ennemyArrayList)
+            {
+                Destroy(ennemy);
+            }
+            ennemyArrayList.Clear();
             CreateDoor();
             doorCreated = true;
         }
@@ -61,6 +66,10 @@ public class GameManagerScript : MonoBehaviour
     void CreateRoom()
     {
         roomGeneratorScript.initiateRoom();
+        foreach (GameObject ennemy in ennemyArrayList)
+        {
+            ennemy.GetComponent<EnnemyScript>().setTargetIA(player);
+        }
     }
 
     void ChangingRoom()

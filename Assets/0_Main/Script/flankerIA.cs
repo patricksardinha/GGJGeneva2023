@@ -29,4 +29,9 @@ public class flankerIA : MonoBehaviour
 
         }
     }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
+    }
 }

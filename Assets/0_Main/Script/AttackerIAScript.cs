@@ -43,4 +43,9 @@ public class AttackerIAScript : MonoBehaviour
             transform.position.Set(transform.position.x, 1, transform.position.z);
         }
     }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
+    }
 }
