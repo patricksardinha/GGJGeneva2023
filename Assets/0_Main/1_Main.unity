@@ -1619,7 +1619,7 @@ PrefabInstance:
     - target: {fileID: 3264497392735068660, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: rootAttackPrefab
       value: 
-      objectReference: {fileID: 2904846022142109281, guid: 04b3797af5039ab408793c3ac988a996, type: 3}
+      objectReference: {fileID: 851200043647582011, guid: d6c7e7edcc7584d429acf17869d7856c, type: 3}
     - target: {fileID: 3264497392735068660, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: timeBetweenMeleeAttack
       value: 1
@@ -1634,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4226274766974434032, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4452991852892210737, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1670,7 +1670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738845036518100675, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5855742516607276316, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1702,7 +1702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914274614484306828, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8076932483866349359, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_LocalPosition.y
