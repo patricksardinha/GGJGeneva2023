@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -924,8 +924,9 @@ MonoBehaviour:
   frontWallPrefab: {fileID: 1344900538982879082, guid: ab8b433d31886f8419b59d89899c6da0, type: 3}
   wallPrefab: {fileID: 1344900538982879082, guid: a1539f11d4d7fa34cb19a99eba2e8bd6, type: 3}
   enemiesPrefabs:
-  - {fileID: 7105800791556273013, guid: d0f37bdc2bfce8e4487b544d31b12488, type: 3}
-  - {fileID: 2786948808328329320, guid: 8b303054e050b2042a8e8b03b8c7a525, type: 3}
+  - {fileID: 8613022530119195433, guid: bc138dd33846d8c45968ed124f60d3c7, type: 3}
+  - {fileID: 3611656996791509369, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
+  - {fileID: 3900465637033647844, guid: 258a279551ad90c4c96837475212e40d, type: 3}
   enemySize: 3
   RDoor: {fileID: 8171204958310405383, guid: bfa828a33631eb940a7710ec4afcc6fe, type: 3}
   LDoor: {fileID: 2939890091860581603, guid: dcbb0aff0d67f1c42adfbf146ab1e113, type: 3}
