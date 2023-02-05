@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7236078082409827842}
   m_Layer: 0
   m_Name: Attacker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDamage: 1
   life: 1
-  IaBehavior: {fileID: 0}
+  isKill: 0
 --- !u!114 &8613022530119195432
 MonoBehaviour:
   m_ObjectHideFlags: 0
