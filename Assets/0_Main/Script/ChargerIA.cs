@@ -9,10 +9,11 @@ public class ChargerIA : MonoBehaviour
 
     private bool detectTarget = false;
     
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+     
     }
 
     // Update is called once per frame
@@ -46,5 +47,10 @@ public class ChargerIA : MonoBehaviour
                 detectTarget = true;
             }
         }
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
     }
 }
