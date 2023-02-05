@@ -2169,6 +2169,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 303594544391727691, guid: 794df002bcff499459732b62b2598bdc, type: 3}
   m_PrefabInstance: {fileID: 2256445826457173878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2256445826457173882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3264497392735068660, guid: 794df002bcff499459732b62b2598bdc, type: 3}
+  m_PrefabInstance: {fileID: 2256445826457173878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256445826457173879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0cacbd8c745704bb94d0ac62d4e7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3812122617558829583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2221,6 +2232,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3812122618316550932, guid: f5d9d996c5a3cb448aae773196d53c21, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1028207925}
+    - target: {fileID: 3812122618316550932, guid: f5d9d996c5a3cb448aae773196d53c21, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2256445826457173879}
@@ -2228,6 +2243,10 @@ PrefabInstance:
       propertyPath: animatorFade
       value: 
       objectReference: {fileID: 2019441123}
+    - target: {fileID: 3812122618316550932, guid: f5d9d996c5a3cb448aae773196d53c21, type: 3}
+      propertyPath: playerSpells
+      value: 
+      objectReference: {fileID: 2256445826457173882}
     - target: {fileID: 3812122618316550932, guid: f5d9d996c5a3cb448aae773196d53c21, type: 3}
       propertyPath: roomGeneratorScript
       value: 

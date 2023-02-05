@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField] private RoomGenerator roomGeneratorScript;
     [SerializeField] private Animator animatorFade;
     [SerializeField] private GameObject UI;
+    [SerializeField] private PlayerSpells playerSpells;
 
     private ArrayList ennemyArrayList = new ArrayList();
     private bool doorCreated = false;
@@ -40,6 +41,7 @@ public class GameManagerScript : MonoBehaviour
                 Destroy(ennemy);
             }
             ennemyArrayList.Clear();
+            playerSpells.resetPlayerAttack();
             CreateDoor();
             doorCreated = true;
         }
