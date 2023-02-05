@@ -87,6 +87,7 @@ public class GameManagerScript : MonoBehaviour
         ClearRoom();
         CreateRoom();
         RespawnPlayer();
+        doorCreated = false;
         Lighten();
     }
     void Darkness()
