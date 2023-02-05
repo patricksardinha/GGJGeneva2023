@@ -14,7 +14,7 @@ public class k_RoomGenerator : MonoBehaviour
 
     private List<int> rouletTen = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-    public int roomLevel = 30;
+    public int roomLevel = 0;
 
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
