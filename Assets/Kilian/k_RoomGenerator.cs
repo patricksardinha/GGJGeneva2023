@@ -186,7 +186,9 @@ public class k_RoomGenerator : MonoBehaviour
         Debug.Log("diff: " + difficulty);
         Debug.Log("posSpawner size before: " + posSpawner.Count);
 
-        while (posSpawner.Count < difficulty)
+        int iteration = 0;
+
+        for (int i = 0; i < difficulty; i++)
         {
             // Avoid spawn last layer
             int randX = UnityEngine.Random.Range(8, xRoom - 1);
@@ -194,8 +196,20 @@ public class k_RoomGenerator : MonoBehaviour
 
             bool verifiedSpawn = CheckSpawn(randX, randZ, posSpawner);
             
-            if (verifiedSpawn)
+            if (verifiedSpawn) {
                 posSpawner.Add(new Vector3(randX, 0.5f, randZ));
+            }
+            else
+            {
+                i--;
+                iteration++;
+            }
+
+            if (iteration > 10)
+            {
+                Debug.Log("Iteration Break");
+                break;
+            }
         }
 
         Debug.Log("posSpawner size after: " + posSpawner.Count);
