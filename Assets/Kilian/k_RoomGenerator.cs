@@ -9,7 +9,12 @@ public class k_RoomGenerator : MonoBehaviour
     public int minRoomSize = 15;
     public int maxRoomSize = 50;
 
+
     public List<float> anglesForTiles = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
+
+    private List<int> rouletTen = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+
+    public int roomLevel = 0;
 
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
@@ -18,6 +23,7 @@ public class k_RoomGenerator : MonoBehaviour
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
     public GameObject[] enemiesPrefabs;
+    public float enemySize = 3.0f;
 
     public GameObject RDoor;
     public GameObject LDoor;
@@ -55,7 +61,6 @@ public class k_RoomGenerator : MonoBehaviour
         }
 
         
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             anim.Play("Fade_In");
@@ -71,34 +76,39 @@ public class k_RoomGenerator : MonoBehaviour
     {
         xRoom = UnityEngine.Random.Range(min, max);
         zRoom = UnityEngine.Random.Range(min, max);
+
+        if (xRoom % 2 == 0)
+            xRoom++;
+        if (zRoom % 2 == 0)
+            zRoom++;
     }
 
 
     private void GenerateRoom(int xRoom, int zRoom)
     {
+        roomLevel++;
+
         GenerateFloor(xRoom, zRoom);
         GenerateBackWalls(xRoom, zRoom);
         GenerateFrontWalls(xRoom, zRoom);
 
         GenerateEnemies(xRoom, zRoom);
+
     }
-
-
 
     private void GenerateFloor(int xRoom, int zRoom)
     {
         Debug.Log("Generate the Floor");
-        
 
-        for (int x = 0; x < xRoom; x += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.x))
+        for (int x = 0; x < xRoom; x += (int)Mathf.Floor(floorPrefab[1].gameObject.transform.GetComponent<BoxCollider>().size.x))
         {
-            for (int z = 0; z < zRoom; z += 2)//(int)Mathf.Floor(floorPrefab[0].transform.localScale.z))
+            for (int z = 0; z < zRoom; z += (int)Mathf.Floor(floorPrefab[1].gameObject.transform.GetComponent<BoxCollider>().size.z))
             { 
                 int tileID = 1;
                 Vector3 tilePosition = new Vector3(x, 0, z);
                 tileObj = (tileID, tilePosition);
                 
-                floorArr.Add(Instantiate(floorPrefab[UnityEngine.Random.Range(0,floorPrefab.Length)], tileObj.tilePosition, Quaternion.Euler(0, anglesForTiles[UnityEngine.Random.Range(0, anglesForTiles.Count)], 0), roomParent));
+                floorArr.Add(Instantiate(floorPrefab[rouletTen[UnityEngine.Random.Range(0,rouletTen.Count)]], tileObj.tilePosition, Quaternion.Euler(0, anglesForTiles[UnityEngine.Random.Range(0, anglesForTiles.Count)], 0), roomParent));
             }
         }
     }
@@ -106,7 +116,7 @@ public class k_RoomGenerator : MonoBehaviour
     private void GenerateBackWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate Walls");
-        for (int x = 0; x < xRoom; x++)
+        for (int x = 0; x < xRoom+1; x++)
         {
             int wallID = 1;
             Vector3 wallPosition = new Vector3(x, wallPrefab.transform.localScale.y / 2, zRoom);
@@ -127,7 +137,7 @@ public class k_RoomGenerator : MonoBehaviour
     private void GenerateFrontWalls(int xRoom, int zRoom)
     {
         Debug.Log("Generate front Walls");
-        for (int x = 0; x < xRoom; x++)
+        for (int x = -1; x < xRoom+1; x++)
         {
             int frontWallID = 1;
             Vector3 frontWallPosition = new Vector3(x, frontWallPrefab.transform.localScale.y / 2, -1);
@@ -135,7 +145,7 @@ public class k_RoomGenerator : MonoBehaviour
             wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
 
-        for (int z = 0; z < zRoom; z++)
+        for (int z = 0; z < zRoom+1; z++)
         {
             int frontWallID = 1;
             Vector3 frontWallPosition = new Vector3(-1, frontWallPrefab.transform.localScale.y / 2, z);
@@ -162,12 +172,9 @@ public class k_RoomGenerator : MonoBehaviour
 
         List<Vector3> spawnPosition = GenerateSpawn();
 
-        // Instanciate nb of enemy according difficulty & nb of tiles
-        // replace spawnPosition
-
         for (int i = 0; i < spawnPosition.Count; i++)
         {
-            enemiesArr.Add(Instantiate(enemiesPrefabs[UnityEngine.Random.Range(0, enemiesPrefabs.Length-1)], spawnPosition[0], Quaternion.identity, roomParent));
+            enemiesArr.Add(Instantiate(enemiesPrefabs[UnityEngine.Random.Range(0, enemiesPrefabs.Length)], spawnPosition[i], Quaternion.identity, roomParent));
         }
     }
 
@@ -175,13 +182,59 @@ public class k_RoomGenerator : MonoBehaviour
     {
         List<Vector3> posSpawner = new List<Vector3>();
 
-        int randX = UnityEngine.Random.Range(8, xRoom);
-        int randZ = UnityEngine.Random.Range(8, zRoom);
-        posSpawner.Add(new Vector3(randX, 0.5f, randZ));
+        int difficulty = ComputeDifficulty();
+
+        int iteration = 0;
+
+        for (int i = 0; i < difficulty; i++)
+        {
+            // Avoid spawn last layer
+            int randX = UnityEngine.Random.Range(8, xRoom - 1);
+            int randZ = UnityEngine.Random.Range(8, zRoom - 1);
+
+            bool verifiedSpawn = CheckSpawn(randX, randZ, posSpawner);
+            
+            if (verifiedSpawn) {
+                posSpawner.Add(new Vector3(randX, 0.5f, randZ));
+            }
+            else
+            {
+                i--;
+                iteration++;
+            }
+
+            if (iteration > 10)
+            {
+                Debug.Log("Iteration Break");
+                break;
+            }
+        }
 
         return posSpawner;
     }
 
+    private bool CheckSpawn(int x, int z, List<Vector3> listSpawn)
+    {
+        Vector3 newSpawn = new Vector3(x, 0, z);
+
+        foreach (Vector3 spawn in listSpawn)
+        {
+            if (Vector3.Distance(newSpawn, spawn) < enemySize)
+                return false;
+        }
+        return true;
+    }
+
+    private int ComputeDifficulty()
+    {
+        int difficulty;
+        // Compute difficulty according : [roomlevel] & [roomsize]
+        // [ ( xRoom * zRoom ) / 500 ] + [ roomlevel / 10 ]
+        // [Room Min size] : ceil[((15) * (15)) / 250] + ceil[] = 0.9 + [] = 1 + []
+        // [Room Max size] : ceil[((50+1) * (50+1)) / 250] + ceil[] = 10.404 + [] = 11 + []
+        difficulty = (int)Mathf.Ceil(((xRoom * zRoom) / 250)) + (int)Mathf.Ceil(roomLevel / 10);
+        return difficulty;
+    }
 
     private void ClearRoom()
     {

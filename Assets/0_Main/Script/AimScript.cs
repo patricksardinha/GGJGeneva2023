@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class AimScript : MonoBehaviour
 {
     private Quaternion PlayerDirection = Quaternion.identity;
+    public MovingScript movingScript;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,10 @@ public class AimScript : MonoBehaviour
             return;
         }
         input = Quaternion.Euler(0, 0, -45) * input;
-        PlayerDirection = Quaternion.LookRotation(new Vector3(input.x, 0, input.y), Vector3.up);
-        
+
+        if (!movingScript.isAttacking)
+        {
+            PlayerDirection = Quaternion.LookRotation(new Vector3(input.x, 0, input.y), Vector3.up);
+        }
     }
 }

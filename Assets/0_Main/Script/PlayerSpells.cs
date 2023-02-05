@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,140 +6,130 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpells : MonoBehaviour
 {
-    public GameObject meleeAttack;
-
-    // Player attacking state
-    // [True] : enable attack
-    // [False] : disable attack
-    private bool isAttackReady;
-
-    // Collider zone of attack player
-    private MeshCollider colliderZoneMelee;
-    private MeshCollider colliderZoneRange;
-
     [SerializeField]
     private GameObject character;
 
+    public GameObject rootAttackPrefab;
+    public Transform[] MeleeRootSpawns;
+    public Transform[] RangeRootSpawns;
+
     private Animator playerAnimator;
 
-    // TODO:SetFloat speedPlayer to enable running animation
-    //      Stop player's movement when attacking
-    // -> playerScript.cs
+    [SerializeField]
+    private float timeBetweenAttacks;
+    private float timeAttack;
+
+    public PlayerScript playerScript;
+
+    List<GameObject> EnnemiesInMelee = new List<GameObject>();
+    List<GameObject> EnnemiesInRange = new List<GameObject>();
+
+
+
+
 
     private void Start()
     {
-        // Zone collider : Child 0 & 1 of Character gameobject
-        colliderZoneMelee = character.transform.GetChild(0).GetComponent<MeshCollider>();
-        colliderZoneRange = character.transform.GetChild(1).GetComponent<MeshCollider>();
-
         playerAnimator = GetComponent<Animator>();
 
-        // Player can directly attack at start
-        isAttackReady = true;
-        
+        timeAttack = timeBetweenAttacks;
     }
 
-
-    /// <summary>
-    /// Dections of collisions with enemies.
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("From Player - I collided with the enemy");
-        }
+        timeAttack -= Time.deltaTime;
     }
 
-    /// <summary>
-    /// Player using melee attack.
-    /// </summary>
-    /// <param name="context">From the input system.</param>
+
     public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
         // The player can attack
-        if (isAttackReady)
+        if (timeAttack <= 0)
         {
             Debug.Log("player is attacking melee");
 
-            isAttackReady = false;
+            playerAnimator.Play("AttackMelee");
 
-            // Play animation clip calling PlayerAttackMeleeStart() / PlayerAttackMeleeEnd()
-            playerAnimator.SetTrigger("attackMelee");
+            //Deals damage to every ennemy in the area
+            foreach (GameObject ennemy in EnnemiesInMelee)
+            {
+                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
+            }
 
-            // Stop movement when attacking
-            //playerAnimator.SetFloat("playerSpeed", 0);
+            //foreach (Transform spawn in MeleeRootSpawns)
+            //{
+            //    //Must instanciate the gameobject for melee attack
+            //    Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+            //}
 
-            //Must instanciate the gameobject for melee attack
-            
+
+            IEnumerator cor = Wait(.1f, MeleeRootSpawns);
+            StartCoroutine(cor);
+
+
+            //Reset time between attacks
+            timeAttack = timeBetweenAttacks;
         }
     }
 
-    /// <summary>
-    /// Animation event start attack melee.
-    /// </summary>
-    public void PlayerAttackMeleeStart()
-    {
-        // Animation Event Keyframe on clip animation [Start]
-        // Enable melee zone collider to detect melee collisions
-        colliderZoneMelee.enabled = true;
-    }
-
-    /// <summary>
-    /// Animation event end attack melee.
-    /// </summary>
-    public void PlayerAttackMeleeEnd()
-    {
-        // Animation Event Keyframe on clip animation [End]
-        // Disable melee zone collider
-        colliderZoneMelee.enabled = false;
-        isAttackReady = true;
-    }
-
-    /// <summary>
-    /// Player using range attack.
-    /// </summary>
-    /// <param name="context">From the input system.</param>
 
     public void OnPlayerAttackRange(InputAction.CallbackContext context)
     {
-        Debug.Log("player is attacking range");
-
         // The player can attack
-        if (isAttackReady)
+        if (timeAttack <= 0)
         {
-            Debug.Log("(attackRange)");
-            isAttackReady = false;
+            Debug.Log("player is attacking range");
 
-            // Stop movement when attacking
-            //playerAnimator.SetFloat("playerSpeed", 0);
+            playerAnimator.Play("AttackRange");
 
-            // Play animation clip calling PlayerAttackRangeStart() / PlayerAttackRangeEnd()
-            playerAnimator.SetTrigger("attackRange");
+            //Deals damage to every ennemy in the area
+            foreach (GameObject ennemy in EnnemiesInRange)
+            {
+                ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
+            }
+
+            IEnumerator cor = Wait(.1f, RangeRootSpawns);
+            StartCoroutine(cor);
+
+            //Reset time between attacks
+            timeAttack = timeBetweenAttacks;
         }
-
     }
 
-    /// <summary>
-    /// Animation event start attack range.
-    /// </summary>
-    public void PlayerAttackRangeStart()
+    IEnumerator Wait(float sec, Transform[] spawn)
     {
-        // Animation Event Keyframe on clip animation [Start]
-        // Enable range zone collider to detect range collisions
-        colliderZoneRange.enabled = true;
+        Instantiate(rootAttackPrefab, spawn[2].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
+
+        Instantiate(rootAttackPrefab, spawn[1].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
+
+        Instantiate(rootAttackPrefab, spawn[0].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
     }
 
-    /// <summary>
-    /// Animation event end attack range.
-    /// </summary>
-    public void PlayerAttackRangeEnd()
+
+    internal void GetEnemyInMelee(GameObject gameObject, bool inArea)
     {
-        // Animation Event Keyframe on clip animation [End]
-        // Disable range zone collider
-        colliderZoneRange.enabled = false;
-        isAttackReady = true;
+        if (inArea)
+        {
+            EnnemiesInMelee.Add(gameObject);
+        }
+        else
+        {
+            EnnemiesInMelee.Remove(gameObject);
+        }
     }
 
+    internal void GetEnemyInRange(GameObject gameObject, bool inArea)
+    {
+        if (inArea)
+        {
+            EnnemiesInRange.Add(gameObject);
+        }
+        else
+        {
+            EnnemiesInRange.Remove(gameObject);
+        }
+    }
 }

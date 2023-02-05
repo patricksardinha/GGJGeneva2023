@@ -374,8 +374,8 @@ MonoBehaviour:
   xRoom: 0
   zRoom: 0
   floorPrefab:
-  - {fileID: 376698629992889320, guid: 3a7c578456570b34faaf6bb51adee860, type: 3}
-  - {fileID: 213704821056519092, guid: 37e64d892245ce84693d50daa735f800, type: 3}
+  - {fileID: 2711641340976388316, guid: 0d377bed988dec041a9b159802dc15ad, type: 3}
+  - {fileID: 9210317219950895801, guid: abb6aeafacb497048a486a054772918b, type: 3}
   frontWallPrefab: {fileID: 1344900538982879082, guid: b539b7b1f8ec6fc4990473c3f4d9052e, type: 3}
   wallPrefab: {fileID: 1344900538982879082, guid: cebf16b2d9d1944489bf786bcc71d197, type: 3}
   enemiesPrefabs:
