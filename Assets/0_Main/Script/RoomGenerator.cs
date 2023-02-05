@@ -23,6 +23,7 @@ public class RoomGenerator : MonoBehaviour
     public GameObject frontWallPrefab;
     public GameObject wallPrefab;
     public GameObject[] enemiesPrefabs;
+    public GameObject racinePrefab;
     public float enemySize = 3.0f;
 
     public GameObject RDoor;
@@ -33,6 +34,7 @@ public class RoomGenerator : MonoBehaviour
     private ArrayList wallArr = new ArrayList();
     private ArrayList doorArr = new ArrayList();
     private ArrayList enemiesArr = new ArrayList();
+    private ArrayList racineArr = new ArrayList();
 
     private (int tileID, Vector3 tilePosition) tileObj;
 
@@ -79,8 +81,18 @@ public class RoomGenerator : MonoBehaviour
         GenerateFloor();
         GenerateBackWalls();
         GenerateFrontWalls();
-
+        GenerateRacine();
         GenerateEnemies();
+    }
+
+    private void GenerateRacine()
+    {
+        Vector3 racinePositionLeft = new Vector3(xRoom, 4.5f, UnityEngine.Random.Range(0,zRoom));
+        Vector3 racinePositionRight = new Vector3(UnityEngine.Random.Range(0, zRoom), 4.5f, zRoom);
+
+        racineArr.Add(Instantiate(racinePrefab, racinePositionRight, Quaternion.identity, roomParent));
+        racineArr.Add(Instantiate(racinePrefab, racinePositionLeft, Quaternion.Euler(0,-90,0), roomParent));
+
     }
 
     private void GenerateFloor()
@@ -244,6 +256,12 @@ public class RoomGenerator : MonoBehaviour
             Destroy(tile);
         }
         wallArr.Clear();
+
+        foreach (GameObject tile in racineArr)
+        {
+            Destroy(tile);
+        }
+        racineArr.Clear();
     }
 
     private void ClearDoors()
