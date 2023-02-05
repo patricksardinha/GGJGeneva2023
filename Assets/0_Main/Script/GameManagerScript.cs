@@ -38,6 +38,11 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
+    public void triggerNextRoom()
+    {
+        ChangingRoom();
+    }
+
     void CreateDoor()
     {
         roomGeneratorScript.GenerateDoors();
