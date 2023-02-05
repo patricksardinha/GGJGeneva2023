@@ -127,7 +127,7 @@ public class RoomGenerator : MonoBehaviour
         for (int x = -1; x < xRoom + 1; x++)
         {
             int frontWallID = 1;
-            Vector3 frontWallPosition = new Vector3(x, frontWallPrefab.transform.localScale.y / 2, -1);
+            Vector3 frontWallPosition = new Vector3(x, (-frontWallPrefab.transform.localScale.y/2)+1, -1);
             tileObj = (frontWallID, frontWallPosition);
             wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
@@ -135,7 +135,7 @@ public class RoomGenerator : MonoBehaviour
         for (int z = 0; z < zRoom + 1; z++)
         {
             int frontWallID = 1;
-            Vector3 frontWallPosition = new Vector3(-1, frontWallPrefab.transform.localScale.y / 2, z);
+            Vector3 frontWallPosition = new Vector3(-1, (-frontWallPrefab.transform.localScale.y / 2) + 1, z);
             tileObj = (frontWallID, frontWallPosition);
             wallArr.Add(Instantiate(frontWallPrefab, tileObj.tilePosition, Quaternion.identity, roomParent));
         }
