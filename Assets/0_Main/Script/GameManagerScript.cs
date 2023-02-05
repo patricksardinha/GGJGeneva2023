@@ -7,6 +7,8 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private RoomGenerator roomGeneratorScript;
+    [SerializeField] private Animator animatorFade;
+    [SerializeField] private GameObject UI;
 
     private ArrayList ennemyArrayList = new ArrayList();
     private bool doorCreated = false;
@@ -82,11 +84,14 @@ public class GameManagerScript : MonoBehaviour
     }
     void Darkness()
     {
-        //darkness
+        UI.SetActive(false);
+        animatorFade.Play("Fade_In");
     }
     void Lighten()
     {
-        //lighten
+        
+        animatorFade.Play("Fade_Out");
+        UI.SetActive(true);
     }
 
 }
