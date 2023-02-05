@@ -795,7 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909760646784591688, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 10.97
       objectReference: {fileID: 0}
     - target: {fileID: 2909760646784591688, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: m_LocalPosition.y
@@ -803,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909760646784591688, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 11.17
       objectReference: {fileID: 0}
     - target: {fileID: 2909760646784591688, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: m_LocalRotation.w
@@ -836,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 3611656996791509369, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: m_Name
       value: EnnemiCharger
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611656996791509369, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7906950845286637822, guid: e873d7d4658300941a6af65e77ad0e63, type: 3}
       propertyPath: target
@@ -1527,6 +1531,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 303594544391727689, guid: 794df002bcff499459732b62b2598bdc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00e5fdd21c54d2b42b62ad77b0349622, type: 2}
     - target: {fileID: 303594544391727691, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1545,7 +1553,7 @@ PrefabInstance:
       objectReference: {fileID: 216919487}
     - target: {fileID: 4523587260411859653, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_VersionIndex
-      value: 173
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 4523587260411859656, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_Mesh
@@ -1565,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 938955193}
     - target: {fileID: 5855742516607276317, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_VersionIndex
-      value: 1499
+      value: 1640
       objectReference: {fileID: 0}
     - target: {fileID: 5855742516607276318, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_Mesh

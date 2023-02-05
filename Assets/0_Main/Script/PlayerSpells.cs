@@ -9,6 +9,10 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField]
     private GameObject character;
 
+    public GameObject rootAttackPrefab;
+    public Transform[] MeleeRootSpawns;
+    public Transform[] RangeRootSpawns;
+
     private Animator playerAnimator;
 
     [SerializeField]
@@ -57,7 +61,13 @@ public class PlayerSpells : MonoBehaviour
                 ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.meleeDamage);
             }
 
-            //Must instanciate the gameobject for melee attack
+            foreach (Transform spawn in MeleeRootSpawns)
+            {
+                //Must instanciate the gameobject for melee attack
+                Instantiate(rootAttackPrefab, spawn.position, Quaternion.identity);
+            }
+
+            
 
             //Reset time between attacks
             timeMeleeAttack = timeBetweenMeleeAttack;
@@ -82,7 +92,11 @@ public class PlayerSpells : MonoBehaviour
                 ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
             }
 
-            //Must instanciate the gameobject for melee attack
+            foreach (Transform spawn in RangeRootSpawns)
+            {
+                //Must instanciate the gameobject for range attack
+                Instantiate(rootAttackPrefab, spawn.position, Quaternion.identity);
+            }
 
             //Reset time between attacks
             timeRangeAttack = timeBetweenRangeAttack;
