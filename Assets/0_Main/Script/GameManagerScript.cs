@@ -91,14 +91,14 @@ public class GameManagerScript : MonoBehaviour
     }
     void Darkness()
     {
-        UI.SetActive(false);
-        animatorFade.Play("Fade_In");
+        //UI.SetActive(false);
+        //animatorFade.Play("Fade_In");
     }
     void Lighten()
     {
         
-        animatorFade.Play("Fade_Out");
-        UI.SetActive(true);
+        //animatorFade.Play("Fade_Out");
+        //UI.SetActive(true);
     }
 
 }

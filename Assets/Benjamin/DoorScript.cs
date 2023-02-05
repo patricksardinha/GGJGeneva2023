@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
+    public bool Traversed = false;
+    
 
-    [SerializeField] private GameManagerScript gameManager;
-
-    DoorScript(GameManagerScript _gameManager)
-    {
-        gameManager = _gameManager;
-    }
-
-    void onTriggerEnter(Collider other)
+    
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            gameManager.triggerNextRoom();
+            Traversed = true;
+            Debug.Log("Door traversed: ");
         }
     }
+    
+    
 }
