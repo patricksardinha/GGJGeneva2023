@@ -32,7 +32,7 @@ public class EnnemyScript : MonoBehaviour
        
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
