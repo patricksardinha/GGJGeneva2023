@@ -10,7 +10,6 @@ public class EnnemyScript : MonoBehaviour
     [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private float attackDamage = 1f;
     [SerializeField] private float life = 1f;
-    [SerializeField] private GameObject IaBehavior;
     public bool isKill = false;
     // Start is called before the first frame update
     void Start()
@@ -59,4 +58,21 @@ public class EnnemyScript : MonoBehaviour
         }
         return false;
     }
+
+    public void setTargetIA(GameObject target)
+    {
+        if (gameObject.GetComponent<flankerIA>() != null)
+        {
+            gameObject.GetComponent<flankerIA>().SetTarget(target);
+        }
+        else if (gameObject.GetComponent<ChargerIA>() != null)
+        {
+            gameObject.GetComponent<ChargerIA>().SetTarget(target);
+        }
+        else if (gameObject.GetComponent<AttackerIAScript>() != null)
+        {
+            gameObject.GetComponent<AttackerIAScript>().SetTarget(target);
+        }
+    }
+    
 }

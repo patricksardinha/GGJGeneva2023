@@ -25,12 +25,12 @@ public class AttackerIAScript : MonoBehaviour
         {
             transform.LookAt(target.transform);
             float DistanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            if (DistanceToTarget > 10f)
+            if (DistanceToTarget > 8.0f)
             {
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
                 //need to use walking animation
             }
-            else if (DistanceToTarget < 4) 
+            else if (DistanceToTarget < 4.0f) 
             {
                 transform.Translate(Vector3.back * Time.deltaTime * speed/2);
                 //need to use walking animation
@@ -42,5 +42,10 @@ public class AttackerIAScript : MonoBehaviour
             }
             transform.position.Set(transform.position.x, 1, transform.position.z);
         }
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
     }
 }

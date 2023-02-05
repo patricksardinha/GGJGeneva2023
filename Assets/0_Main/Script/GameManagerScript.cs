@@ -7,6 +7,9 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private RoomGenerator roomGeneratorScript;
+    [SerializeField] private Animator animatorFade;
+    [SerializeField] private GameObject UI;
+    [SerializeField] private PlayerSpells playerSpells;
 
     private ArrayList ennemyArrayList = new ArrayList();
     private bool doorCreated = false;
@@ -33,6 +36,12 @@ public class GameManagerScript : MonoBehaviour
 
         if (allDead && !doorCreated)
         {
+            foreach (GameObject ennemy in ennemyArrayList)
+            {
+                Destroy(ennemy);
+            }
+            ennemyArrayList.Clear();
+            playerSpells.resetPlayerAttack();
             CreateDoor();
             doorCreated = true;
         }
@@ -61,6 +70,10 @@ public class GameManagerScript : MonoBehaviour
     void CreateRoom()
     {
         roomGeneratorScript.initiateRoom();
+        foreach (GameObject ennemy in ennemyArrayList)
+        {
+            ennemy.GetComponent<EnnemyScript>().setTargetIA(player);
+        }
     }
 
     void ChangingRoom()
@@ -73,11 +86,14 @@ public class GameManagerScript : MonoBehaviour
     }
     void Darkness()
     {
-        //darkness
+        UI.SetActive(false);
+        animatorFade.Play("Fade_In");
     }
     void Lighten()
     {
-        //lighten
+        
+        animatorFade.Play("Fade_Out");
+        UI.SetActive(true);
     }
 
 }

@@ -40,6 +40,11 @@ public class PlayerSpells : MonoBehaviour
         timeAttack -= Time.deltaTime;
     }
 
+    public void resetPlayerAttack()
+    {
+        EnnemiesInMelee.Clear();
+        EnnemiesInRange.Clear();
+    }
 
     public void OnPlayerAttackMelee(InputAction.CallbackContext context)
     {
