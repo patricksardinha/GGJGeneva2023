@@ -183,8 +183,6 @@ public class k_RoomGenerator : MonoBehaviour
         List<Vector3> posSpawner = new List<Vector3>();
 
         int difficulty = ComputeDifficulty();
-        Debug.Log("diff: " + difficulty);
-        Debug.Log("posSpawner size before: " + posSpawner.Count);
 
         int iteration = 0;
 
@@ -212,7 +210,6 @@ public class k_RoomGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log("posSpawner size after: " + posSpawner.Count);
         return posSpawner;
     }
 
