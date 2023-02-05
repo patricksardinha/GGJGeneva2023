@@ -169,6 +169,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95316062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3812122618316550932, guid: f5d9d996c5a3cb448aae773196d53c21, type: 3}
+  m_PrefabInstance: {fileID: 3812122617558829583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6848421b6487d884eb26ffa6cfce6cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123535340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1047,7 @@ MonoBehaviour:
   roomLevel: 0
   xRoom: 30
   zRoom: 20
+  gameManagerScript: {fileID: 95316062}
   floorPrefab:
   - {fileID: 2711641340976388316, guid: e3b68e433b80b9d4790c67dccd5d506a, type: 3}
   - {fileID: 9210317219950895801, guid: 97c10ecfbf3cc744097e07849f4c4ce2, type: 3}

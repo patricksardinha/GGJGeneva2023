@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-
-    [SerializeField] private GameManagerScript gameManager;
-
-    DoorScript(GameManagerScript _gameManager)
-    {
-        gameManager = _gameManager;
-    }
-
+    public bool Traversed = false;
     void onTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            gameManager.triggerNextRoom();
+            Traversed = true;
         }
     }
+    
+    
 }

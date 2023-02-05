@@ -17,6 +17,7 @@ public class RoomGenerator : MonoBehaviour
 
     [SerializeField] private int xRoom;
     [SerializeField] private int zRoom;
+    [SerializeField] private GameManagerScript gameManagerScript;
 
     public GameObject[] floorPrefab;
     public GameObject frontWallPrefab;
@@ -44,20 +45,14 @@ public class RoomGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Return))
+        foreach (GameObject door in doorArr)
         {
-            ClearRoom();
-            GenerateRoomSize(minRoomSize, maxRoomSize);
-            GenerateRoom(xRoom, zRoom);
+            if (door.GetComponent<DoorScript>().Traversed)
+            {
+                gameManagerScript.triggerNextRoom();
+                break;
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            ClearDoors();
-            GenerateDoors(xRoom, zRoom);
-        }
-        */
     }
 
     public void initiateRoom()
