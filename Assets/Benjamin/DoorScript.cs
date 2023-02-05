@@ -10,6 +10,7 @@ public class DoorScript : MonoBehaviour
     
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("aa");
         if (other.gameObject.tag == "Player")
         {
             Traversed = true;
