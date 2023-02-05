@@ -782,6 +782,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &514219556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3675645924298719419, guid: 8efefcd9e17aa3f4e80588c143f6a081, type: 3}
+  m_PrefabInstance: {fileID: 1028207924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &649384564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1777,6 +1782,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5839530875063363504, guid: 794df002bcff499459732b62b2598bdc, type: 3}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 514219556}
     - target: {fileID: 5855742516607276316, guid: 794df002bcff499459732b62b2598bdc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
