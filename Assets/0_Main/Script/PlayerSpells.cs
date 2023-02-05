@@ -64,7 +64,7 @@ public class PlayerSpells : MonoBehaviour
             foreach (Transform spawn in MeleeRootSpawns)
             {
                 //Must instanciate the gameobject for melee attack
-                Instantiate(rootAttackPrefab, spawn.position, Quaternion.identity);
+                Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
             }
 
             
@@ -95,7 +95,7 @@ public class PlayerSpells : MonoBehaviour
             foreach (Transform spawn in RangeRootSpawns)
             {
                 //Must instanciate the gameobject for range attack
-                Instantiate(rootAttackPrefab, spawn.position, Quaternion.identity);
+                Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
             }
 
             //Reset time between attacks
