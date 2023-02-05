@@ -75,6 +75,20 @@ public class PlayerSpells : MonoBehaviour
     }
 
 
+    IEnumerator Wait(float sec, Transform[] spawn)
+    {
+        Instantiate(rootAttackPrefab, spawn[2].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
+
+        Instantiate(rootAttackPrefab, spawn[1].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
+
+        Instantiate(rootAttackPrefab, spawn[0].position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+        yield return new WaitForSeconds(sec);
+    }
+
+
+
     public void OnPlayerAttackRange(InputAction.CallbackContext context)
     {
         Debug.Log("player is attacking range");
@@ -92,11 +106,8 @@ public class PlayerSpells : MonoBehaviour
                 ennemy.GetComponent<EnnemyScript>().TakeDamage(playerScript.rangeDamage);
             }
 
-            foreach (Transform spawn in RangeRootSpawns)
-            {
-                //Must instanciate the gameobject for range attack
-                Instantiate(rootAttackPrefab, spawn.position, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
-            }
+            IEnumerator cor = Wait(.1f, RangeRootSpawns);
+            StartCoroutine(cor);
 
             //Reset time between attacks
             timeRangeAttack = timeBetweenRangeAttack;
